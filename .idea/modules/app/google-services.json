@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "942245333114",
+    "project_id": "larissogrosir-853f5",
+    "storage_bucket": "larissogrosir-853f5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:942245333114:android:7b9843896ef34ffa9e13c3",
+        "android_client_info": {
+          "package_name": "com.asa.larissogrosir"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "942245333114-gs40of5o147daqkkt9037e2cjjh6a821.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.asa.larissogrosir",
+            "certificate_hash": "68bc459c297e586773f9ea49228f3e9783d93b3a"
+          }
+        },
+        {
+          "client_id": "942245333114-4mp59tqsksi6e79hto9t61k6tqbjeoh2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSRLapf3Mg6WYtf1UE0-orWoInp7v9Yxc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "942245333114-4mp59tqsksi6e79hto9t61k6tqbjeoh2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
