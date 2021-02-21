@@ -4,136 +4,204 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFF"
     android:orientation="vertical"
-    android:weightSum="10"
-    tools:context=".Activity.grosir.act_otp_validation">
+    tools:context=".Activity.retail.act_otp_validation_retail">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1.5"
+        android:layout_height="75dp"
+        android:layout_marginTop="50dp"
         android:orientation="vertical">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Kami sedang mengirim kode OTP \nke e-mail :"
-            android:textColor="#000000"
-            android:textAlignment="center" />
-        <TextView
-            android:id="@+id/email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#000000"
-            android:textStyle="bold"
+            android:text="Klik disini untuk meminta kode OTP"
+            android:textAlignment="center"
+            android:textColor="#000" />
+
+        <Button
+            android:id="@+id/request"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
             android:layout_marginTop="10dp"
-            android:textSize="22dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginLeft="15dp"
+            android:layout_gravity="center"
+            android:background="@color/warna2"
+            android:text="Request OTP"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:textColor="#fff"></Button>
 
-            android:textAlignment="center" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="3"
+        android:layout_height="150dp"
         android:gravity="center">
+
         <ImageView
-            android:layout_width="260dp"
-            android:layout_height="200dp"
-            android:background="@drawable/gbr_otp_validation">
-        </ImageView>
+            android:layout_width="180dp"
+            android:layout_height="120dp"
+            android:background="@drawable/gbr_otp_validation"></ImageView>
     </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Kode OTP akan dikirimkan ke alamat email :"
+        android:textAlignment="center"
+        android:textColor="#000"></TextView>
+
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="5dp"
+        android:hint="alamatemailanda@gmail.com"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:textSize="22sp"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Tunggu sms dari kami, lalu sertakan \nkode OTP dibawah ini ya"
-            android:textColor="#000000"
-            android:textAlignment="center" />
-    </LinearLayout>
+        android:layout_height="100dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="horizontal">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1.5"
-        android:gravity="center">
         <EditText
             android:id="@+id/satu"
             android:layout_width="75dp"
             android:layout_height="80dp"
-            android:background="@drawable/bt_round_otp"
-            android:textAlignment="center"
-            android:maxLength="1"
+            android:layout_marginHorizontal="5dp"
+            android:background="@drawable/rt_bt_form"
             android:focusable="true"
-            android:inputType="number"
             android:imeOptions="actionNext"
+            android:inputType="number"
+            android:maxLength="1"
+            android:textAlignment="center"
+            android:textColor="#FF661B"
+            android:textSize="30dp"
+            android:textStyle="bold"></EditText>
 
-            android:textSize="30dp">
-        </EditText>
         <EditText
             android:id="@+id/dua"
             android:layout_width="75dp"
             android:layout_height="80dp"
-            android:layout_marginLeft="90dp"
-            android:background="@drawable/bt_round_otp"
-            android:textAlignment="center"
-            android:maxLength="1"
-            android:inputType="number"
+            android:layout_marginHorizontal="5dp"
+            android:background="@drawable/rt_bt_form"
             android:imeOptions="actionNext"
+            android:inputType="number"
+            android:maxLength="1"
+            android:textAlignment="center"
+            android:textColor="#FF661B"
+            android:textSize="30dp"
+            android:textStyle="bold"></EditText>
 
-            android:textSize="30dp">
-        </EditText>
         <EditText
             android:id="@+id/tiga"
             android:layout_width="75dp"
             android:layout_height="80dp"
-            android:layout_marginLeft="180dp"
-            android:background="@drawable/bt_round_otp"
-            android:textAlignment="center"
-            android:maxLength="1"
-            android:inputType="number"
+            android:layout_marginHorizontal="5dp"
+            android:background="@drawable/rt_bt_form"
             android:imeOptions="actionNext"
+            android:inputType="number"
+            android:maxLength="1"
+            android:textAlignment="center"
+            android:textColor="#FF661B"
+            android:textSize="30dp"
+            android:textStyle="bold"></EditText>
 
-            android:textSize="30dp">
-        </EditText>
         <EditText
             android:id="@+id/empat"
             android:layout_width="75dp"
             android:layout_height="80dp"
-            android:layout_marginLeft="270dp"
-            android:background="@drawable/bt_round_otp"
-            android:textAlignment="center"
-            android:maxLength="1"
-            android:inputType="number"
+            android:layout_marginHorizontal="5dp"
+            android:background="@drawable/rt_bt_form"
             android:imeOptions="actionDone"
+            android:inputType="number"
+            android:maxLength="1"
+            android:textAlignment="center"
+            android:textColor="#FF661B"
+            android:textSize="30dp"
+            android:textStyle="bold"></EditText>
+    </LinearLayout>
 
-            android:textSize="30dp">
-        </EditText>
-    </RelativeLayout>
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="@color/warna1"
+        android:text="Selanjutnya"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"></Button>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="center">
-        <Button
-            android:id="@+id/btn_next"
-            android:layout_width="160dp"
-            android:layout_height="50dp"
-            android:text="Selanjutnya"
-            android:textColor="#FFFFFF"
-            android:background="@drawable/grosir_bt_square_secondary">
-        </Button>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tidak menerima kode? "></TextView>
+
+        <TextView
+            android:id="@+id/resend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Klik disini"
+            android:textColor="@color/warna2"
+            android:textStyle="bold"
+            android:visibility="visible"></TextView>
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ly_resend_in"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="gone">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mengirim ulang dalam "/>
+        <TextView
+            android:id="@+id/timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" detik"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/wa_cs"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/whatsapp_icon"
+                android:layout_gravity="center"
+                ></ImageView>
+        </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>

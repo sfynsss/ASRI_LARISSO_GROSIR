@@ -8,12 +8,15 @@ public class MstJual {
     @SerializedName("no_ent")
     @Expose
     private String noEnt;
+    @SerializedName("no_resi")
+    @Expose
+    private String noResi;
     @SerializedName("id_user")
     @Expose
-    private Integer idUser;
+    private String idUser;
     @SerializedName("sts_byr")
     @Expose
-    private Integer stsByr;
+    private String stsByr;
     @SerializedName("tanggal")
     @Expose
     private String tanggal;
@@ -22,10 +25,29 @@ public class MstJual {
     private String jnsPengiriman;
     @SerializedName("total")
     @Expose
-    private Integer total;
+    private String total;
+    @SerializedName("ongkir")
+    @Expose
+    private String ongkir;
+    @SerializedName("disc_value")
+    @Expose
+    private String discValue;
     @SerializedName("jumlah")
     @Expose
-    private Integer jumlah;
+    private String jumlah;
+    @SerializedName("payment_type")
+    @Expose
+    private String paymentType;
+    @SerializedName("bank_name")
+    @Expose
+    private String bankName;
+    @SerializedName("va_number")
+    @Expose
+    private String vaNumber;
+    @SerializedName("sts_transaksi")
+    @Expose
+    private String stsTransaksi;
+
 
     public String getNoEnt() {
         return noEnt;
@@ -35,19 +57,23 @@ public class MstJual {
         this.noEnt = noEnt;
     }
 
-    public Integer getIdUser() {
+    public String getNoResi() {return noResi;}
+
+    public void setNoResi(String noResi) {this.noResi = noResi;}
+
+    public String getIdUser() {
         return idUser;
     }
 
-    public void setIdUser(Integer idUser) {
+    public void setIdUser(String idUser) {
         this.idUser = idUser;
     }
 
-    public Integer getStsByr() {
+    public String getStsByr() {
         return stsByr;
     }
 
-    public void setStsByr(Integer stsByr) {
+    public void setStsByr(String stsByr) {
         this.stsByr = stsByr;
     }
 
@@ -67,20 +93,68 @@ public class MstJual {
         this.jnsPengiriman = jnsPengiriman;
     }
 
-    public Integer getTotal() {
+    public String getTotal() {
         return total;
     }
 
-    public void setTotal(Integer total) {
+    public void setTotal(String total) {
         this.total = total;
     }
 
-    public Integer getJumlah() {
+    public String getOngkir() {
+        return ongkir;
+    }
+
+    public void setOngkir(String ongkir) {
+        this.ongkir = ongkir;
+    }
+
+    public String getDiscValue() {
+        return discValue;
+    }
+
+    public void setDiscValue(String discValue) {
+        this.discValue = discValue;
+    }
+
+    public String getJumlah() {
         return jumlah;
     }
 
-    public void setJumlah(Integer jumlah) {
+    public void setJumlah(String jumlah) {
         this.jumlah = jumlah;
+    }
+
+    public String getPaymentType() {
+        return paymentType;
+    }
+
+    public void setPaymentType(String paymentType) {
+        this.paymentType = paymentType;
+    }
+
+    public String getBankName() {
+        return bankName;
+    }
+
+    public void setBankName(String bankName) {
+        this.bankName = bankName;
+    }
+
+    public String getVaNumber() {
+        return vaNumber;
+    }
+
+    public void setVaNumber(String vaNumber) {
+        this.vaNumber = vaNumber;
+    }
+
+    public String getStsTransaksi() {
+        return stsTransaksi;
+    }
+
+    public void setStsTransaksi(String stsTransaksi) {
+        this.stsTransaksi = stsTransaksi;
     }
 
 }

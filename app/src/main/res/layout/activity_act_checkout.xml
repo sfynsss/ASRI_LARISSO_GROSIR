@@ -7,14 +7,14 @@
     android:weightSum="10"
     android:orientation="vertical"
     android:background="#ffffff"
-    tools:context=".Activity.retail.act_checkout">
+    tools:context=".act_checkout">
 
     <!-- HEADER START -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:orientation="vertical"
-        android:background="@drawable/grosir_main_header_mini">
+        android:background="@drawable/gr_main_header">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -23,7 +23,7 @@
                 android:id="@+id/back"
                 android:layout_width="25dp"
                 android:layout_height="match_parent"
-                android:src="@drawable/ic_back_gbr"
+                android:src="@drawable/gr_ic_back"
                 android:layout_marginLeft="20dp"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -58,18 +58,18 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="Pesanan Diantar Ke"
+                    android:text="Pesanan diantar ke"
                     android:textColor="#000"
                     android:textStyle="bold"
                     android:gravity="center_vertical"
-                    android:paddingLeft="20dp">
+                    android:paddingLeft="16dp">
                 </TextView>
                 <TextView
                     android:id="@+id/ganti_alamat"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="Ganti Alamat"
+                    android:text="Pilih Alamat"
                     android:textColor="#8C97AA"
                     android:textStyle="bold"
                     android:gravity="center_vertical|end"
@@ -79,7 +79,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="60dp"
                 android:orientation="horizontal"
                 android:weightSum="10">
                 <LinearLayout
@@ -98,7 +98,6 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="8"
-                    android:layout_marginLeft="10dp"
                     android:text=""
                     android:textColor="#000"
                     android:gravity="center_vertical">
@@ -107,63 +106,63 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:orientation="horizontal"
-                android:weightSum="2">
-                <TextView
+                android:layout_height="60dp"
+                android:weightSum="10"
+                android:orientation="horizontal">
+                <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="Nama Penerima :"
-                    android:textColor="#000"
+                    android:layout_weight="5"
+                    android:orientation="vertical"
                     android:gravity="center_vertical"
-                    android:paddingLeft="20dp">
-                </TextView>
-                <TextView
+                    android:paddingLeft="16dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nama Penerima :"
+                        android:textColor="#000">
+                    </TextView>
+                    <TextView
+                        android:id="@+id/nama_penerima"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="nama_penerima"
+                        android:textColor="#000"
+                        android:textStyle="bold">
+                    </TextView>
+                </LinearLayout>
+                <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="No. Telepon :"
-                    android:textColor="#000"
+                    android:layout_weight="5"
+                    android:orientation="vertical"
                     android:gravity="center_vertical|end"
-                    android:paddingRight="20dp">
-                </TextView>
+                    android:paddingRight="16dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Telepon Penerima :"
+                        android:textColor="#000">
+                    </TextView>
+                    <TextView
+                        android:id="@+id/no_penerima"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="nomor_penerima"
+                        android:textColor="#000"
+                        android:textStyle="bold">
+                    </TextView>
+                </LinearLayout>
             </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:orientation="horizontal"
-                android:weightSum="2">
-                <TextView
-                    android:id="@+id/nama_penerima"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text=""
-                    android:textColor="#000"
-                    android:textStyle="bold"
-                    android:gravity="center_vertical"
-                    android:paddingLeft="20dp">
-                </TextView>
-                <TextView
-                    android:id="@+id/no_penerima"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text=""
-                    android:textColor="#000"
-                    android:textStyle="bold"
-                    android:gravity="center_vertical|end"
-                    android:paddingRight="20dp">
-                </TextView>
-            </LinearLayout>
-            <!--batas garis-->
+
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="5dp"
                 android:background="#E9E9E9">
             </ImageView>
             <!--batas garis-->
+
+            <!--Pilih Kurir-->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
@@ -171,33 +170,31 @@
                 android:textColor="#000"
                 android:textStyle="bold"
                 android:gravity="center_vertical"
-                android:paddingLeft="20dp">
+                android:paddingLeft="16dp">
             </TextView>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="85dp"
                 android:orientation="horizontal"
                 android:weightSum="10"
                 android:layout_marginBottom="10dp">
-
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:layout_marginLeft="5dp"
                     android:layout_gravity="center">
-
                     <ImageView
                         android:id="@+id/nama_kurir"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:layout_margin="5dp"></ImageView>
-
+                        android:layout_margin="5dp">
+                    </ImageView>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="5"
                     android:orientation="vertical">
                     <Spinner
@@ -205,18 +202,19 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="3dp"
-                        android:background="#ffffff">
+                        android:background="#fff">
                     </Spinner>
                     <TextView
                         android:id="@+id/harga_ongkir"
                         android:layout_width="match_parent"
-                        android:layout_height="30dp"
+                        android:layout_height="wrap_content"
                         android:text=""
-                        android:textSize="14dp"
-
+                        android:textStyle="bold"
+                        android:textSize="12dp"
                         android:textColor="#000"
+                        android:ellipsize="none"
                         android:layout_marginLeft="10dp"
-                        android:gravity="center_vertical">
+                        android:gravity="center_vertical|top">
                     </TextView>
                 </LinearLayout>
                 <LinearLayout
@@ -229,62 +227,21 @@
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_margin="15dp"
+                        android:textAllCaps="false"
                         android:background="@drawable/grosir_bt_square_secondary"
                         android:text="Pilih"
                         android:textColor="#fff">
                     </Button>
                 </LinearLayout>
             </LinearLayout>
-            <!--batas garis-->
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="5dp"
                 android:background="#E9E9E9">
             </ImageView>
-            <!--batas garis-->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:text="Voucher Belanja"
-                android:textColor="#000"
-                android:textStyle="bold"
-                android:gravity="center_vertical"
-                android:paddingLeft="20dp">
-            </TextView>
-            <LinearLayout
-                android:id="@+id/pilih_voucher"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:orientation="horizontal"
-                android:weightSum="10">
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="9"
-                    android:text="Anda memiliki 3 voucher, pakai sekarang"
-                    android:textColor="#000"
-                    android:layout_marginLeft="20dp"
-                    android:gravity="center_vertical|start">
-                </TextView>
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center">
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:background="@drawable/ic_arrow_right">
-                    </ImageView>
-                </LinearLayout>
-            </LinearLayout>
-            <!--batas garis-->
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="5dp"
-                android:background="#E9E9E9">
-            </ImageView>
-            <!--batas garis-->
+            <!--Pilih Kurir-->
+
+            <!--Cart-->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
@@ -292,7 +249,7 @@
                 android:textColor="#000"
                 android:textStyle="bold"
                 android:gravity="center_vertical"
-                android:paddingLeft="20dp">
+                android:paddingLeft="16dp">
             </TextView>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -303,7 +260,119 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:scrollbars="none"
-                    android:layout_marginBottom="10dp"></ListView>
+                    android:layout_marginBottom="10dp">
+                </ListView>
+            </LinearLayout>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="#E9E9E9">
+            </ImageView>
+            <!--Cart-->
+
+            <!--Voucher-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Voucher Anda"
+                    android:textColor="#000"
+                    android:textStyle="bold"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="16dp">
+                </TextView>
+                <TextView
+                    android:id="@+id/pilih_voucher"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Lihat Semua"
+                    android:textStyle="bold"
+                    android:gravity="center_vertical|end"
+                    android:paddingRight="20dp">
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tx_voucher"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="16dp"
+                    android:gravity="center"
+                    android:text="Anda belum menggunakan voucher">
+                </TextView>
+                <LinearLayout
+                    android:id="@+id/ly_gunakan_voucher"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="16dp"
+                    android:orientation="vertical"
+                    android:weightSum="10"
+                    android:visibility="gone">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="6"
+                        android:gravity="center"
+                        android:background="@drawable/gr_checkout_bt_voucher">
+                        <TextView
+                            android:id="@+id/nama_voucher"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="Nama Voucher"
+                            android:textColor="#FF983C">
+                        </TextView>
+                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/hapus_voucher"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="4"
+                        android:gravity="center"
+                        android:text="gunakan nanti"
+                        android:textStyle="bold"
+                        android:textColor="#EF4B4B"
+                        android:textSize="12sp">
+                    </TextView>
+                </LinearLayout>
+            </LinearLayout>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="#E9E9E9">
+            </ImageView>
+            <!--Voucher-->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="Tambah Catatan Pesanan :"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:gravity="center_vertical"
+                android:paddingLeft="20dp">
+            </TextView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:padding="10dp">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/rt_bg_white_round"
+                    android:hint="Tulis catatan / keterangan pesanan anda bila perlu"
+                    android:textSize="12dp"
+                    android:paddingLeft="16dp">
+                </EditText>
             </LinearLayout>
 
             <!--batas garis-->
@@ -323,6 +392,7 @@
                 android:gravity="center_vertical"
                 android:paddingLeft="20dp">
             </TextView>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
@@ -376,6 +446,34 @@
                 </TextView>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/ly_potongan_voucher"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:visibility="gone">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Potongan Voucher :"
+                    android:textColor="#000"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="20dp">
+                </TextView>
+                <TextView
+                    android:id="@+id/potongan_voucher"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text=""
+                    android:textColor="#FD7468"
+                    android:textStyle="bold"
+                    android:gravity="center_vertical|end"
+                    android:paddingRight="20dp">
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:orientation="horizontal"
@@ -413,6 +511,7 @@
                     android:text="Pilih Pembayaran"
                     android:textColor="#fff"
                     android:textStyle="bold"
+                    android:textAllCaps="false"
                     android:background="@drawable/grosir_bt_square_secondary">
                 </Button>
             </LinearLayout>

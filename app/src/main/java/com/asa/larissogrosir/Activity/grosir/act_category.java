@@ -1,6 +1,7 @@
 package com.asa.larissogrosir.Activity.grosir;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -14,6 +15,7 @@ import com.asa.larissogrosir.Api.RetrofitClient;
 import com.asa.larissogrosir.Response.BaseResponse;
 import com.asa.larissogrosir.Session.Session;
 import com.asa.larissogrosir.Table.kategori;
+import com.facebook.shimmer.ShimmerFrameLayout;
 
 import java.util.ArrayList;
 
@@ -35,6 +37,8 @@ public class act_category extends AppCompatActivity {
 
     RecyclerView kategoriBarang;
     AdapterKategoriBarang adapterKategori;
+    Handler handler = new Handler();
+    ShimmerFrameLayout shimmer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,10 +53,23 @@ public class act_category extends AppCompatActivity {
             }
         });
         kategoriBarang = findViewById(R.id.kategori_barang);
+        shimmer = findViewById(R.id.shimmer);
 
         session = new Session(act_category.this);
         api = RetrofitClient.createServiceWithAuth(Api.class, session.getToken());
-        getKategori = api.getKategoriBarang("all");
+        getKategori = api.getKategoriBarang("all", session.getKdOutlet());
+
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                shimmer.stopShimmer();
+                shimmer.hideShimmer();
+                shimmer.setVisibility(View.GONE);
+                kategoriBarang.setVisibility(View.VISIBLE);
+            }
+        },2850);
+
+
         getKategori.enqueue(new Callback<BaseResponse<kategori>>() {
             @Override
             public void onResponse(Call<BaseResponse<kategori>> call, Response<BaseResponse<kategori>> response) {
@@ -82,4 +99,5 @@ public class act_category extends AppCompatActivity {
         });
 
     }
+
 }

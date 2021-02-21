@@ -13,7 +13,10 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.asa.larissogrosir.Api.Api;
@@ -34,11 +37,14 @@ import retrofit2.Response;
 
 public class act_register extends AppCompatActivity {
 
-    EditText username, tgl_lahir, email, alamat, no_telp, password;
+    EditText username, email, alamat, no_telp, password;
+    LinearLayout select_tgl_lahir;
+    TextView tgl_lahir;
     ImageView show_password;
     Button btn_daftar;
     ProgressBar progressBar;
     Boolean showPasswordClicked = false;
+    Spinner jenis_kelamin;
 
     final Calendar calendar = Calendar.getInstance();
     int yy = calendar.get(Calendar.YEAR);
@@ -56,6 +62,7 @@ public class act_register extends AppCompatActivity {
         setContentView(R.layout.activity_act_register);
 
         username = findViewById(R.id.username);
+        select_tgl_lahir = findViewById(R.id.select_tgl_lahir);
         tgl_lahir = findViewById(R.id.tgl_lahir);
         email = findViewById(R.id.email);
         alamat = findViewById(R.id.alamat);
@@ -63,6 +70,7 @@ public class act_register extends AppCompatActivity {
         password = findViewById(R.id.password);
         progressBar = findViewById(R.id.progress_register);
         btn_daftar = findViewById(R.id.btn_daftar);
+        jenis_kelamin = findViewById(R.id.jenis_kelamin);
 
         session = new Session(act_register.this);
         api = RetrofitClient.createService(Api.class);
@@ -79,7 +87,7 @@ public class act_register extends AppCompatActivity {
                     }
                 });
 
-        tgl_lahir.setOnClickListener(new View.OnClickListener() {
+        select_tgl_lahir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(act_register.this, new DatePickerDialog.OnDateSetListener() {
@@ -100,8 +108,8 @@ public class act_register extends AppCompatActivity {
         btn_daftar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                register = api.register(username.getText().toString()+"",  tgl_lahir.getText().toString(),"03", email.getText().toString()+"",
-                        alamat.getText().toString(), no_telp.getText().toString(), password.getText().toString(), firebase_token);
+                register = api.register(username.getText().toString() + "", tgl_lahir.getText().toString(), "GROSIR", email.getText().toString() + "",
+                        alamat.getText().toString(), no_telp.getText().toString(), password.getText().toString(), firebase_token, jenis_kelamin.getSelectedItem().toString());
 //                startActivity(new Intent(act_register_retail.this, act_otp_validation_retail.class));
                 progressBar.setVisibility(View.VISIBLE);
 
@@ -110,14 +118,17 @@ public class act_register extends AppCompatActivity {
                     public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
                         if (response.isSuccessful()) {
                             progressBar.setVisibility(View.INVISIBLE);
-                            session.setUserStatus(true, true, response.body().getRegister().getId()+"",
+                            session.setUserStatus(
+                                    true,
+                                    response.body().getRegister().getId() + "",
+                                    response.body().getRegister().getId()+"",
                                     response.body().getRegister().getName()+"",
                                     response.body().getRegister().getEmail()+"",
                                     response.body().getRegister().getApiToken()+"",
                                     response.body().getRegister().getOtoritas()+"");
                             Intent it = new Intent(act_register.this, act_home.class);
 //                            it.putExtra("email", response.body().getRegister().getEmail()+"");
-//                            startActivity(it);
+                            startActivity(it);
                             finish();
                         } else {
                             progressBar.setVisibility(View.INVISIBLE);

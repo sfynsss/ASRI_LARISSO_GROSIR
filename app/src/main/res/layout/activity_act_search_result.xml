@@ -30,7 +30,7 @@
                     android:id="@+id/btn_back"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
-                    android:background="@drawable/ic_back_gbr">
+                    android:background="@drawable/gr_ic_back">
                 </ImageView>
             </LinearLayout>
             <LinearLayout

@@ -5,7 +5,6 @@ import com.google.gson.annotations.SerializedName;
 
 public class Alamat {
 
-
     @SerializedName("kd_alamat")
     @Expose
     private Integer kdAlamat;
@@ -48,7 +47,6 @@ public class Alamat {
     @SerializedName("longitude")
     @Expose
     private Double longitude;
-
 
     public Integer getKdAlamat() {
         return kdAlamat;
@@ -163,3 +161,4 @@ public class Alamat {
     }
 
 }
+

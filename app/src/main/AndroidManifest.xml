@@ -8,10 +8,9 @@
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <uses-feature android:name="android.hardware.location.gps" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
-    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
@@ -27,6 +26,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:replace="android:allowBackup">
+        <activity android:name=".act_point"></activity>
+
         <service
             android:name="com.asa.larissogrosir.Activity.FirebaseCloudeMessaging"
             android:exported="false">

@@ -15,14 +15,19 @@ public class Session {
         this.editor = preferences.edit();
     }
 
-    public void setUserStatus(Boolean loggedIn, Boolean aktifasi, String id_user, String name, String email, String token, String otoritas){
+    public void setLoggedIn(Boolean loggedIn) {
         editor.putBoolean("loggedIn", loggedIn);
-        editor.putBoolean("aktifasi", aktifasi);
+        editor.commit();
+    }
+
+    public void setUserStatus(Boolean loggedIn, String id_user, String name, String email, String token, String otoritas, String jenis_kelamin){
+        editor.putBoolean("loggedIn", loggedIn);
         editor.putString("id_user", id_user);
         editor.putString("name", name);
         editor.putString("email", email);
         editor.putString("token", token);
         editor.putString("otoritas", otoritas);
+        editor.putString("JNS_KELAMIN", jenis_kelamin);
         editor.commit();
     }
 
@@ -31,7 +36,7 @@ public class Session {
         editor.commit();
     }
 
-    public void setKd_cust(String kd_cust){
+    public void setKdCust(String kd_cust){
         editor.putString("kd_cust", kd_cust);
         editor.commit();
     }
@@ -41,8 +46,21 @@ public class Session {
         editor.commit();
     }
 
+    public void setOutlet(String kd_outlet, String nama_outlet, String gambar_outlet, Boolean sts_outlet){
+        editor.putString("kd_outlet", kd_outlet);
+        editor.putString("nama_outlet", nama_outlet);
+        editor.putString("gambar_outlet", gambar_outlet);
+        editor.putBoolean("sts_outlet", sts_outlet);
+        editor.commit();
+    }
+
+    public void setJenisKelamin(String jenis_kelamin){
+        editor.putString("JNS_KELAMIN", jenis_kelamin);
+        editor.commit();
+    }
+
     public String getBaseUrl() {
-        return preferences.getString("baseUrl", "192.168.1.3:8000");
+        return preferences.getString("baseUrl", "server.larisso.co.id");
     }
 
     public boolean getUserStatus(){
@@ -51,10 +69,6 @@ public class Session {
 
     public boolean getUserActivation(){
         return preferences.getBoolean("activation", false);
-    }
-
-    public boolean getAktifasiStatus(){
-        return preferences.getBoolean("aktifasi", false);
     }
 
     public String getUsername(){
@@ -69,7 +83,7 @@ public class Session {
         return preferences.getString("id_user", "");
     }
 
-    public String telp(){
+    public String getNoTelp(){
         return preferences.getString("no_telp", "");
     }
 
@@ -80,6 +94,28 @@ public class Session {
     public String getOtoritas() {
         return preferences.getString("otoritas", "");
     }
+
+    public String getKdCust() {
+        return preferences.getString("kd_cust", "");
+    }
+
+    public String getKdOutlet() {
+        return preferences.getString("kd_outlet", "");
+    }
+
+    public String getNamaOutlet() {
+        return preferences.getString("nama_outlet", "");
+    }
+
+    public String getGambarOutlet() {
+        return preferences.getString("gambar_outlet", "");
+    }
+
+    public boolean getStsOutlet() {
+        return preferences.getBoolean("sts_outlet", false);
+    }
+
+    public String getJenisKelamin(){ return preferences.getString("JNS_KELAMIN", ""); }
 
     public void setAlamat(String nama_penerima, String provinsi, String kota, String kecamatan, String kd_provinsi, String kd_kota,
                           String kd_kecamatan, String alamat, String kode_pos, String latitude, String longitude) {
@@ -140,5 +176,6 @@ public class Session {
     public String getLong() {
         return preferences.getString("longitude", "");
     }
+
 }
 

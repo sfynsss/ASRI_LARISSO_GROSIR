@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Activity.retail.act_history_transaksi">
+    tools:context=".act_history_transaksi">
 
     <!-- HEADER START -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:orientation="vertical"
-        android:background="@drawable/grosir_main_header_mini">
+        android:background="@drawable/gr_main_header">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -21,7 +21,7 @@
                 android:id="@+id/back"
                 android:layout_width="25dp"
                 android:layout_height="match_parent"
-                android:src="@drawable/ic_back_gbr"
+                android:src="@drawable/gr_ic_back"
                 android:layout_marginLeft="20dp"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -37,11 +37,94 @@
     </LinearLayout>
     <!-- HEADER END -->
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#168FFA"
+        android:weightSum="12"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:paddingLeft="8dp"
+            android:paddingRight="4dp"
+            android:paddingVertical="4dp">
+            <Button
+                android:id="@+id/filter_semua_diskon"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Semua \nTransaksi"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                android:textColor="#26C6DA"
+                android:background="@drawable/gr_filter_bt_off">
+            </Button>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:paddingHorizontal="6dp"
+            android:paddingVertical="4dp">
+            <Button
+                android:id="@+id/filter_transaksi_berhasil"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Transaksi \nBerhasil"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                android:textColor="#26C6DA"
+                android:background="@drawable/gr_filter_bt_off">
+            </Button>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:paddingHorizontal="6dp"
+            android:paddingVertical="4dp">
+            <Button
+                android:id="@+id/filter_menunggu_pembayaran"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Menunggu \nPembayaran"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                android:textColor="#26C6DA"
+                android:background="@drawable/gr_filter_bt_off">
+            </Button>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:paddingLeft="4dp"
+            android:paddingRight="8dp"
+            android:paddingVertical="4dp">
+            <Button
+                android:id="@+id/filter_transaksi_dibatalkan"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Transaksi \nDibatalkan"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                android:textColor="#26C6DA"
+                android:background="@drawable/gr_filter_bt_off">
+            </Button>
+        </LinearLayout>
+    </LinearLayout>
+
     <ListView
         android:id="@+id/list_transaksi"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="10dp"
         android:dividerHeight="5dp"
-        android:divider="#00FFFFFF"></ListView>
+        android:divider="#00FFFFFF">
+    </ListView>
 </LinearLayout>

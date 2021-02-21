@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:weightSum="2"
-        android:background="@drawable/grosir_main_header_mini">
+        android:background="@drawable/gr_main_header">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

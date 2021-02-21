@@ -5,82 +5,71 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:weightSum="10"
-    tools:context=".Activity.grosir.act_otp_validation">
+    android:background="#FFF"
+    tools:context=".Activity.retail.act_otp_validation_retail">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1.5"/>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="100dp"
+        android:layout_marginTop="45dp"
         android:gravity="center">
 
         <TextView
-            android:id="@+id/sign"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="35dp"
-            android:text="Verifikasi"
-            android:textColor="#000000"
+            android:text="Verifikasi "
+            android:textColor="#086DEE"
+            android:textSize="35sp"
             android:textStyle="bold"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="20dp"/>
+            android:fontFamily="@font/overpass_regular">
+        </TextView>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="35dp"
+            android:textSize="35sp"
             android:text="Berhasil"
-            android:textColor="@color/bluePrimary"
+            android:textColor="#26C6DA"
             android:textStyle="bold"
-            android:layout_centerVertical="true"
-            android:layout_toEndOf="@id/sign"
-            android:layout_marginLeft="5dp"/>
-
-    </RelativeLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Selamat ya, sekarang kamu sudah bisa berbelanja \ndi aplikasi Larisso Mobile"
-            android:textColor="#000000"
-
-            android:textAlignment="center" />
+            android:fontFamily="@font/overpass_regular">
+        </TextView>
     </LinearLayout>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Selamat, kini anda dapat berbelanja di aplikasi Larisso Mobile"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:paddingHorizontal="16dp"
+        android:textAlignment="center"
+        android:fontFamily="@font/overpass_regular">
+    </TextView>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="3"
+        android:layout_height="200dp"
         android:gravity="center">
         <ImageView
-            android:layout_width="280dp"
-            android:layout_height="300dp"
+            android:layout_width="220dp"
+            android:layout_height="200dp"
             android:background="@drawable/gbr_otp_success">
         </ImageView>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:layout_marginTop="20dp">
+        android:layout_height="100dp"
+        android:gravity="center">
         <Button
             android:id="@+id/btn_next"
-            android:layout_width="160dp"
-            android:layout_height="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="16dp"
             android:text="Selanjutnya"
             android:textColor="#FFFFFF"
-            android:background="@drawable/grosir_bt_square_secondary">
+            android:textAllCaps="false"
+            android:background="#086DEE">
         </Button>
     </LinearLayout>
 

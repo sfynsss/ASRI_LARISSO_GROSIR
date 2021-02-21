@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,10 +10,11 @@
 
     <!-- HEADER START -->
     <LinearLayout
+        android:id="@+id/header"
         android:layout_width="match_parent"
-        android:layout_height="54dp"
+        android:layout_height="70dp"
         android:orientation="vertical"
-        android:background="@drawable/grosir_main_header_mini">
+        android:background="@drawable/gr_main_header">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -22,13 +23,13 @@
                 android:id="@+id/back"
                 android:layout_width="25dp"
                 android:layout_height="match_parent"
-                android:src="@drawable/ic_back_gbr"
+                android:src="@drawable/gr_ic_back"
                 android:layout_marginLeft="20dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lihat Kategori Barang"
-                android:textSize="24dp"
+                android:text="Kategori Barang"
+                android:textSize="20dp"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold"
                 android:layout_marginLeft="23dp"
@@ -38,16 +39,26 @@
     </LinearLayout>
     <!-- HEADER END -->
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="center">
-
+        android:gravity="center"
+        android:layout_below="@+id/header">
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true">
+            <include
+                layout="@layout/shimmer_category_loading">
+            </include>
+        </com.facebook.shimmer.ShimmerFrameLayout>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/kategori_barang"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </LinearLayout>
-
-</LinearLayout>
+            android:layout_height="match_parent"
+            android:visibility="gone">
+        </androidx.recyclerview.widget.RecyclerView>
+    </RelativeLayout>
+</RelativeLayout>

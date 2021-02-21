@@ -17,7 +17,7 @@
             android:gravity="center">
             <ImageView
                 android:id="@+id/gambar_barang"
-                android:layout_width="125dp"
+                android:layout_width="match_parent"
                 android:layout_height="125dp"
                 android:layout_margin="10dp">
             </ImageView>
@@ -32,13 +32,13 @@
                 android:id="@+id/nama_barang"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Rujak Cireng Srikandi Jumbo"
-
+                android:text="Nama barang yang dibeli"
                 android:textColor="#000"
                 android:textStyle="bold"
                 android:paddingTop="5dp"
                 android:layout_marginBottom="15dp"
-                android:gravity="center_vertical|top">
+                android:gravity="center_vertical|top"
+                android:fontFamily="@font/overpass_regular">
             </TextView>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -48,21 +48,23 @@
                 android:layout_marginTop="5dp">
                 <TextView
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="2.5"
                     android:text="Jumlah :"
                     android:textColor="#000"
-                    android:gravity="center_vertical">
+                    android:gravity="center_vertical"
+                    android:fontFamily="@font/overpass_regular">
                 </TextView>
                 <TextView
                     android:id="@+id/jumlah_barang"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="7.5"
                     android:text="1"
                     android:textColor="#000"
                     android:textStyle="bold"
-                    android:gravity="center_vertical">
+                    android:gravity="center_vertical"
+                    android:fontFamily="@font/overpass_regular">
                 </TextView>
             </LinearLayout>
             <LinearLayout
@@ -73,21 +75,23 @@
                 android:layout_marginTop="5dp">
                 <TextView
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="2.5"
                     android:text="Harga\t\t:\t"
                     android:textColor="#000"
-                    android:gravity="center_vertical">
+                    android:gravity="center_vertical"
+                    android:fontFamily="@font/overpass_regular">
                 </TextView>
                 <TextView
                     android:id="@+id/harga_barang"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="7.5"
                     android:text="1"
                     android:textColor="#000"
                     android:textStyle="bold"
-                    android:gravity="center_vertical">
+                    android:gravity="center_vertical"
+                    android:fontFamily="@font/overpass_regular">
                 </TextView>
             </LinearLayout>
             <LinearLayout
@@ -98,21 +102,23 @@
                 android:layout_marginTop="5dp">
                 <TextView
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="3.5"
                     android:text="Total Harga :"
                     android:textColor="#000"
-                    android:gravity="center_vertical">
+                    android:gravity="center_vertical"
+                    android:fontFamily="@font/overpass_regular">
                 </TextView>
                 <TextView
                     android:id="@+id/subtot"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="6.5"
-                    android:text="Rp. 74.800"
+                    android:text="Rp10.000"
                     android:textColor="#000"
                     android:textStyle="bold"
-                    android:gravity="center_vertical">
+                    android:gravity="center_vertical"
+                    android:fontFamily="@font/overpass_regular">
                 </TextView>
             </LinearLayout>
         </LinearLayout>

@@ -1,181 +1,420 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@color/grey"
-    tools:context=".Activity.grosir.frm_home">
+    tools:context=".Activity.retail.frm_home">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="176dp"
-        android:background="@drawable/grosir_dashboard_header"
-        android:weightSum="4"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.75">
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:layout_marginBottom="10dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Larisso Grosir"
-                android:textColor="#ffffff"
-                android:textSize="24dp"
-                android:textStyle="bold"
-                android:layout_marginLeft="15dp"
-                android:layout_gravity="center"/>
-        </LinearLayout>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1.5"
-            app:cardCornerRadius="10dp"
-            android:layout_margin="10dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:weightSum="10">
-
-                <EditText
-                    android:id="@+id/pencarian"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="8.5"
-                    android:background="#ffffff"
-                    android:layout_marginLeft="5dp"
-                    android:hint="Cari Disini Produk Anda"
-                    android:textSize="15dp"
-                    android:paddingLeft="15dp"/>
-
-                <Button
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1.1"
-                    android:background="@drawable/bt_round_search"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:drawableLeft="@drawable/ic_search_24"
-                    android:paddingLeft="8dp"/>
-
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-    </LinearLayout>
-
-    <androidx.core.widget.NestedScrollView
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <LinearLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Pilih Kategori Produk"
-                    android:textColor="#000000"
-                    android:textStyle="bold"
-                    android:textSize="18dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"></TextView>
-
-                <TextView
-                    android:id="@+id/lihat_semua"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Lihat Semua"
-                    android:textColor="#AEAEAE"
-                    android:textStyle="bold"
-                    android:textSize="12dp"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginRight="10dp"></TextView>
-
-            </RelativeLayout>
-
+            android:layout_height="match_parent">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="240dp"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/kategori_barang"
+                <RelativeLayout
+                    android:id="@+id/ly_header"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"/>
+                    android:layout_height="180dp"
+                    android:background="@drawable/gr_dashboard_header"
+                    android:orientation="vertical"
+                    android:paddingLeft="16dp">
+                    <ImageView
+                        android:id="@+id/logo"
+                        android:layout_width="200dp"
+                        android:layout_height="60dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/rt_logo_full">
+                    </ImageView>
+                    <TextView
+                        android:id="@+id/tx_hallo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/logo"
+                        android:layout_marginTop="10dp"
+                        android:text="Hallo, "
+                        android:textColor="#FFF"
+                        android:textSize="16sp"
+                        android:textStyle="bold">
+                    </TextView>
+                    <TextView
+                        android:id="@+id/nama_pengguna"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/logo"
+                        android:layout_marginTop="10dp"
+                        android:layout_toEndOf="@+id/tx_hallo"
+                        android:text="namapengguna"
+                        android:textColor="#FDF041"
+                        android:textSize="16sp"
+                        android:textStyle="bold">
+                    </TextView>
+                    <TextView
+                        android:id="@+id/tx_greeting"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tx_hallo"
+                        android:text="Selamat datang di LaRisso Grosir"
+                        android:textColor="#FFF"
+                        android:textSize="16sp">
+                    </TextView>
+                </RelativeLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/ly_section"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginTop="-50dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="10dp"
+                    android:layout_below="@+id/ly_header">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:weightSum="10">
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="6.5"
+                            android:weightSum="10"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="3"
+                                android:paddingLeft="12dp"
+                                android:gravity="center_vertical|bottom"
+                                android:text="Ada yang mau dicari?"
+                                android:textStyle="bold"
+                                android:textColor="#000">
+                            </TextView>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="7"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginVertical="10dp"
+                                android:background="@drawable/rt_bg_white_round">
+                                <TextView
+                                    android:id="@+id/ke_halaman_pencarian"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center_vertical"
+                                    android:hint="Ketik nama barang disini..."
+                                    android:inputType="text"
+                                    android:textSize="14dp"
+                                    android:maxLength="50"
+                                    android:maxLines="1"
+                                    android:textColor="#000"
+                                    android:background="@null"
+                                    android:paddingLeft="12sp">
+                                </TextView>
+                            </LinearLayout>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="3.5"
+                            android:weightSum="10"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="3"
+                                android:text="Outlet Saat Ini"
+                                android:textSize="12sp"
+                                android:gravity="center"
+                                android:textStyle="bold"
+                                android:textColor="#000">
+                            </TextView>
+                            <LinearLayout
+                                android:id="@+id/btn_outlet"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="7"
+                                android:weightSum="10"
+                                android:orientation="vertical"
+                                android:gravity="center">
+                                <ImageView
+                                    android:id="@+id/gambar_outlet"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp">
+                                </ImageView>
+                                <TextView
+                                    android:id="@+id/nama_outlet"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="6dp"
+                                    android:textSize="12sp"
+                                    android:textColor="#000">
+                                </TextView>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:textStyle="bold"
+                        android:layout_height="wrap_content"
+                        android:text="Voucher dan Point"
+                        android:textColor="#000000"
+                        android:textSize="18sp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="16dp">
+                    </TextView>
+                </RelativeLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_marginHorizontal="16dp"
+                    app:cardCornerRadius="10dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:weightSum="10">
+                        <RelativeLayout
+                            android:id="@+id/btn_voucher"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="4.5">
+                            <TextView
+                                android:id="@+id/tx_voucher_anda"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/overpass_regular"
+                                android:layout_alignParentTop="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="10dp"
+                                android:text="Voucher Anda"
+                                android:textColor="#000">
+                            </TextView>
+                            <ImageView
+                                android:id="@+id/ic_voucher_anda"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_below="@id/tx_voucher_anda"
+                                android:layout_marginTop="6dp"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginEnd="6dp"
+                                android:background="@drawable/ic_profil_voucher">
+                            </ImageView>
+                            <TextView
+                                android:id="@+id/tx_voucher"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/tx_voucher_anda"
+                                android:layout_toEndOf="@+id/ic_voucher_anda"
+                                android:layout_marginTop="6dp"
+                                android:text="0"
+                                android:textColor="#FFDC45"
+                                android:textStyle="bold">
+                            </TextView>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/tx_voucher_anda"
+                                android:layout_toEndOf="@+id/tx_voucher"
+                                android:layout_marginTop="6dp"
+                                android:text=" Voucher"
+                                android:textColor="#FFDC45"
+                                android:textStyle="bold">
+                            </TextView>
+                        </RelativeLayout>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center">
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginVertical="16dp"
+                                android:background="@drawable/rt_dash">
+                            </ImageView>
+                        </LinearLayout>
+                        <RelativeLayout
+                            android:id="@+id/btn_point"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="4.5">
+                            <TextView
+                                android:id="@+id/tx_poin_anda"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/overpass_regular"
+                                android:layout_alignParentTop="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="10dp"
+                                android:text="Point Anda"
+                                android:textColor="#000">
+                            </TextView>
+                            <ImageView
+                                android:id="@+id/ic_poin_anda"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_below="@id/tx_poin_anda"
+                                android:layout_marginTop="6dp"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginRight="6dp"
+                                android:background="@drawable/ic_profil_point">
+                            </ImageView>
+                            <TextView
+                                android:id="@+id/tx_point"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/tx_poin_anda"
+                                android:layout_toEndOf="@+id/ic_poin_anda"
+                                android:layout_marginTop="6dp"
+                                android:text="0"
+                                android:textColor="#FFDC45"
+                                android:textStyle="bold">
+                            </TextView>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/tx_poin_anda"
+                                android:layout_toEndOf="@+id/tx_point"
+                                android:layout_marginTop="6dp"
+                                android:text=" Point"
+                                android:textColor="#FFDC45"
+                                android:textStyle="bold">
+                            </TextView>
+                        </RelativeLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginHorizontal="16dp">
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/btn_diskon"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/gr_dashboard_promo">
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pilih Kategori Produk"
+                        android:textColor="#000000"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="16dp">
+                    </TextView>
+                    <TextView
+                        android:id="@+id/lihat_semua"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Lihat Semua"
+                        android:textColor="#AEAEAE"
+                        android:textStyle="bold"
+                        android:textSize="12dp"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginRight="16dp">
+                    </TextView>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="240dp"
+                    android:orientation="vertical"
+                    android:gravity="center">
+                    <com.facebook.shimmer.ShimmerFrameLayout
+                        android:id="@+id/shimmer"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true">
+                        <include
+                            layout="@layout/shimmer_category_loading">
+                        </include>
+                    </com.facebook.shimmer.ShimmerFrameLayout>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/kategori_barang"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="visible"
+                        tools:listitem="@layout/adapter_kategori">
+                    </androidx.recyclerview.widget.RecyclerView>
+                </RelativeLayout>
+
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Penawaran Terbaik"
+                        android:textColor="#000000"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="16dp">
+                    </TextView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Lihat Semua"
+                        android:textColor="#AEAEAE"
+                        android:textStyle="bold"
+                        android:textSize="12dp"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginRight="10dp">
+                    </TextView>
+                </RelativeLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="175dp"
+                    app:cardCornerRadius="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp">
+                    <com.synnapps.carouselview.CarouselView
+                        android:id="@+id/carouselView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:fillColor="#FFFFFFFF"
+                        app:pageColor="#00000000"
+                        app:radius="4dp"
+                        app:slideInterval="3000"/>
+                </androidx.cardview.widget.CardView>
             </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Penawaran Terbaik"
-                    android:textColor="#000000"
-                    android:textStyle="bold"
-                    android:textSize="18dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"></TextView>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Lihat Semua"
-                    android:textColor="#AEAEAE"
-                    android:textStyle="bold"
-                    android:textSize="12dp"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentEnd="true"
 
-                    android:layout_marginRight="10dp"></TextView>
-
-            </RelativeLayout>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="175dp"
-                app:cardCornerRadius="15dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp">
-
-                <com.synnapps.carouselview.CarouselView
-                    android:id="@+id/carouselView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:fillColor="#FFFFFFFF"
-                    app:pageColor="#00000000"
-                    app:radius="4dp"
-                    app:slideInterval="3000"/>
-
-            </androidx.cardview.widget.CardView>
-
-        </LinearLayout>
-
-    </androidx.core.widget.NestedScrollView>
-
-</LinearLayout>
+</RelativeLayout>

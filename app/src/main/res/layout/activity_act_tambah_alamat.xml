@@ -5,15 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:weightSum="10"
-    tools:context=".Activity.grosir.act_tambah_alamat">
+    tools:context=".Activity.retail.act_tambah_alamat">
 
     <!-- HEADER START -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="54dp"
+        android:layout_height="70dp"
         android:orientation="vertical"
-        android:background="@drawable/grosir_main_header_mini">
+        android:background="@drawable/gr_main_header">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -22,13 +21,13 @@
                 android:id="@+id/back"
                 android:layout_width="25dp"
                 android:layout_height="match_parent"
-                android:src="@drawable/ic_back_gbr"
+                android:src="@drawable/gr_ic_back"
                 android:layout_marginLeft="20dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tambah Alamat"
-                android:textSize="24dp"
+                android:textSize="20dp"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold"
                 android:layout_marginLeft="23dp"
@@ -38,233 +37,354 @@
     </LinearLayout>
     <!-- HEADER END -->
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.1"></LinearLayout>
-
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="8.5">
-
+        android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:orientation="vertical">
+                android:layout_height="35dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="16dp"
+                    android:text="Samakan dengan data diri? ">
+                </TextView>
+                <Switch
+                    android:id="@+id/lengkapi_otomatis"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+                </Switch>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="35dp">
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
                     android:text="Nama Penerima"
-                    ></TextView>
+                    android:textStyle="bold"
+                    android:textColor="#000"
+                    android:layout_marginHorizontal="22dp">
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:paddingHorizontal="10dp">
                 <EditText
                     android:id="@+id/nama_penerima"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:background="@drawable/et_round_register"
-                    android:hint="Isikan dengan nama penerima . . ."
-
-                    android:textSize="13dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/rt_bt_form"
+                    android:hint="Nama Penerima"
+                    android:textSize="13sp"
                     android:inputType="text"
                     android:imeOptions="actionNext"
                     android:drawablePadding="10dp"
-                    android:paddingLeft="20dp">
+                    android:paddingLeft="12dp">
                 </EditText>
             </LinearLayout>
-
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="5dp"></LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:orientation="vertical">
+                android:layout_height="35dp">
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="No Telepon Penerima"
-                    ></TextView>
-                <EditText
-                    android:id="@+id/no_telp"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:background="@drawable/et_round_register"
-                    android:hint="Isikan dengan no telepon penerima . . ."
-
-                    android:textSize="13dp"
-                    android:inputType="number"
-                    android:maxLength="14"
-                    android:imeOptions="actionNext"
-                    android:drawablePadding="10dp"
-                    android:paddingLeft="20dp">
-                </EditText>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="5dp"></LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:orientation="vertical"
-                android:weightSum="2">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Provinsi"
-                    ></TextView>
-                <Spinner
-                    android:id="@+id/provinsi"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:autofillHints="provinsi"
-                    android:paddingLeft="10dp"
-                    android:theme="@style/SpinnerTheme"
-                    android:background="@drawable/et_round_register"></Spinner>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="5dp"></LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:orientation="vertical"
-                android:weightSum="2">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Kota"
-                    ></TextView>
-                <Spinner
-                    android:id="@+id/kota"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:autofillHints="kota"
-                    android:paddingLeft="10dp"
-                    android:theme="@style/SpinnerTheme"
-                    android:background="@drawable/et_round_register"></Spinner>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="5dp"></LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:orientation="vertical"
-                android:weightSum="2">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Kecamatan"
-                    ></TextView>
-                <Spinner
-                    android:id="@+id/kecamatan"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:autofillHints="kecamatan"
-                    android:paddingLeft="10dp"
-                    android:theme="@style/SpinnerTheme"
-                    android:background="@drawable/et_round_register"></Spinner>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="5dp"></LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
                     android:text="Alamat Lengkap"
-                    ></TextView>
+                    android:textStyle="bold"
+                    android:textColor="#000"
+                    android:layout_marginHorizontal="22dp">
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="5dp">
                 <EditText
                     android:id="@+id/alamat"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:background="@drawable/et_round_register"
-                    android:hint="Isikan dengan Alamat Anda . . ."
-
-                    android:textSize="13dp"
+                    android:background="@drawable/rt_bt_form"
+                    android:hint="Jl. Rasamala 101 "
+                    android:textSize="13sp"
                     android:inputType="text"
-                    android:imeOptions="actionDone"
+                    android:imeOptions="actionNext"
                     android:drawablePadding="10dp"
                     android:paddingLeft="20dp">
                 </EditText>
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:weightSum="2"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="Provinsi"
+                    android:textStyle="bold"
+                    android:textColor="#000"
+                    android:layout_marginLeft="22dp">
+                </TextView>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="Kota"
+                    android:textStyle="bold"
+                    android:textColor="#000"
+                    android:layout_marginLeft="22dp">
+                </TextView>
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="5dp"></LinearLayout>
-
+                android:layout_height="50dp"
+                android:weightSum="2"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="5dp">
+                    <Spinner
+                        android:id="@+id/provinsi"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:autofillHints="provinsi"
+                        android:paddingLeft="10dp"
+                        android:theme="@style/SpinnerTheme"
+                        android:background="@drawable/rt_bt_form">
+                    </Spinner>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="5dp">
+                    <Spinner
+                        android:id="@+id/kota"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:autofillHints="provinsi"
+                        android:paddingLeft="10dp"
+                        android:theme="@style/SpinnerTheme"
+                        android:background="@drawable/rt_bt_form">
+                    </Spinner>
+                </LinearLayout>
+            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:orientation="vertical">
+                android:layout_height="35dp"
+                android:weightSum="2"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="Kecamatan"
+                    android:textStyle="bold"
+                    android:textColor="#000"
+                    android:layout_marginLeft="22dp">
+                </TextView>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="Kode Pos"
+                    android:textStyle="bold"
+                    android:textColor="#000"
+                    android:layout_marginLeft="22dp">
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:weightSum="2"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="5dp">
+                    <Spinner
+                        android:id="@+id/kecamatan"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:autofillHints="provinsi"
+                        android:paddingLeft="10dp"
+                        android:theme="@style/SpinnerTheme"
+                        android:background="@drawable/rt_bt_form">
+                    </Spinner>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="5dp">
+                    <EditText
+                        android:id="@+id/kode_pos"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/rt_bt_form"
+                        android:paddingLeft="12dp"
+                        android:hint="12345"
+                        android:inputType="number"
+                        android:textSize="13sp"
+                        android:maxEms="5"
+                        android:maxLength="5"
+                        android:imeOptions="actionDone">
+                    </EditText>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="35dp">
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Kode Pos"
-                    ></TextView>
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="No. Telepon Penerima"
+                    android:textStyle="bold"
+                    android:textColor="#000"
+                    android:layout_marginHorizontal="22dp">
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="5dp">
                 <EditText
-                    android:id="@+id/kode_pos"
+                    android:id="@+id/no_telp"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:background="@drawable/et_round_register"
-                    android:hint="Kode Pos Alamat Anda . . ."
-
-                    android:textSize="13dp"
-                    android:inputType="number"
-                    android:maxEms="5"
-                    android:maxLength="5"
-                    android:imeOptions="actionDone"
+                    android:background="@drawable/rt_bt_form"
+                    android:hint="082345678910"
+                    android:textSize="13sp"
+                    android:inputType="text|number"
+                    android:imeOptions="actionNext"
                     android:drawablePadding="10dp"
                     android:paddingLeft="20dp">
                 </EditText>
             </LinearLayout>
 
+            <!--            <LinearLayout-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="35dp"-->
+            <!--                android:orientation="vertical"-->
+            <!--                android:layout_marginTop="10dp">-->
+            <!--                <TextView-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:gravity="center_vertical"-->
+            <!--                    android:text="Pin Lokasi"-->
+            <!--                    android:textStyle="bold"-->
+            <!--                    android:textColor="#000"-->
+            <!--                    android:layout_marginHorizontal="22dp">-->
+            <!--                </TextView>-->
+            <!--                <TextView-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:gravity="center_vertical"-->
+            <!--                    android:text="Pilih titik lokasi alamat anda"-->
+            <!--                    android:textSize="11sp"-->
+            <!--                    android:layout_marginHorizontal="22dp">-->
+            <!--                </TextView>-->
+            <!--            </LinearLayout>-->
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="5dp"></LinearLayout>
+                android:layout_height="35dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="Koordinat Lokasi Penerima"
+                    android:textStyle="bold"
+                    android:textColor="#000"
+                    android:layout_marginHorizontal="22dp">
+                </TextView>
+            </LinearLayout>
 
-            <Button
-                android:id="@+id/btn_simpan"
-                android:layout_width="160dp"
-                android:layout_height="42dp"
-                android:text="Simpan"
-                android:textColor="#ffffff"
-                android:textStyle="bold"
-                android:layout_gravity="center"
-                android:fontFamily="@font/roboto_regular"
-                android:background="@drawable/grosir_bt_square_secondary"></Button>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginHorizontal="14dp"
+                android:weightSum="10"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="7"
+                    android:layout_marginRight="10dp">
+                    <TextView
+                        android:id="@+id/lat_long"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/rt_bt_form"
+                        android:gravity="center_vertical"
+                        android:textSize="13sp"
+                        android:text="Koordinat belum dipilih"
+                        android:paddingLeft="20dp">
+                    </TextView>
+                </LinearLayout>
+                <Button
+                    android:id="@+id/btn_pin_lokasi"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:text="Pilih \nKoordinat"
+                    android:textAllCaps="false"
+                    android:textSize="11sp"
+                    android:background="@drawable/grosir_bt_square_secondary"
+                    android:textColor="#FFF">
+                </Button>
+            </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:gravity="center">
+                <Button
+                    android:id="@+id/btn_simpan"
+                    android:layout_width="200dp"
+                    android:layout_height="50dp"
+                    android:text="Simpan"
+                    android:textColor="#fff"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/roboto_regular"
+                    android:background="@drawable/grosir_bt_square_secondary">
+                </Button>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="25dp">
+            </LinearLayout>
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>

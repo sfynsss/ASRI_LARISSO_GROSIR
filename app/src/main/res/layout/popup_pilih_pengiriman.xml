@@ -24,7 +24,7 @@
             android:text="Pilih Pengiriman"
             android:gravity=""
             android:textStyle="bold"
-
+            android:fontFamily="@font/poppins_medium"
             android:textSize="20dp"></TextView>
     </LinearLayout>
 

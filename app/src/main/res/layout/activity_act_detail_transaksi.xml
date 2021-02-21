@@ -6,14 +6,18 @@
     android:layout_height="match_parent"
     android:weightSum="10"
     android:orientation="vertical"
-    tools:context=".Activity.grosir.act_detail_transaksi">
+    tools:context=".Activity.retail.act_detail_transaksi">
 
     <!-- HEADER START -->
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="54dp"
+        android:layout_height="0dp"
+        android:background="@drawable/gr_main_header"
         android:orientation="vertical"
-        android:background="@drawable/grosir_main_header_mini">
+        android:layout_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -22,278 +26,279 @@
                 android:id="@+id/back"
                 android:layout_width="25dp"
                 android:layout_height="match_parent"
-                android:src="@drawable/ic_back_gbr"
-                android:layout_marginLeft="20dp"/>
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/gr_ic_back"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Detail Transaksi"
-                android:textSize="24dp"
-                android:textColor="#FFFFFF"
-                android:textStyle="bold"
+                android:layout_gravity="center"
                 android:layout_marginLeft="23dp"
-                android:layout_gravity="center">
-            </TextView>
+                android:text="Detail Transaksi"
+                android:textColor="#FFFFFF"
+                android:textSize="20dp"
+                android:textStyle="bold"/>
         </LinearLayout>
     </LinearLayout>
     <!-- HEADER END -->
 
-    <LinearLayout
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh_layout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="8.5"
-        android:weightSum="10"
+        android:layout_weight="3.5">
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FFF"
+            android:orientation="vertical"
+            android:weightSum="10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="Nomor Transaksi">
+            </TextView>
+            <TextView
+                android:id="@+id/no_ent"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:text="12345678910"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="#090F47">
+            </TextView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:weightSum="10"
+                android:layout_marginTop="5dp"
+                android:layout_marginHorizontal="16dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:text="Tanggal Transaksi"
+                    android:gravity="center_vertical">
+                </TextView>
+                <TextView
+                    android:id="@+id/tgl_transaksi"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:text="12.12.2020"
+                    android:textColor="#090F47"
+                    android:textStyle="bold"
+                    android:gravity="center_vertical|end">
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:weightSum="10"
+                android:layout_marginTop="6dp"
+                android:layout_marginHorizontal="16dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:text="Waktu Transaksi"
+                    android:gravity="center_vertical">
+                </TextView>
+                <TextView
+                    android:id="@+id/waktu_transaksi"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:text="11.41"
+                    android:textColor="#090F47"
+                    android:textStyle="bold"
+                    android:gravity="center_vertical|end">
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:weightSum="10"
+                android:layout_marginTop="6dp"
+                android:layout_marginHorizontal="16dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:text="Jasa Pengiriman"
+                    android:gravity="center_vertical">
+                </TextView>
+                <TextView
+                    android:id="@+id/pengiriman"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:text="LaRisso COD"
+                    android:textColor="#090F47"
+                    android:textStyle="bold"
+                    android:gravity="center_vertical|end">
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ly_ongkir"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:weightSum="10"
+                android:layout_marginTop="6dp"
+                android:layout_marginHorizontal="16dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:text="Ongkos Kirim"
+                    android:gravity="center_vertical">
+                </TextView>
+                <TextView
+                    android:id="@+id/ongkir"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:text="Rp.100"
+                    android:textColor="#090F47"
+                    android:textStyle="bold"
+                    android:gravity="center_vertical|end">
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ly_potongan_voucher"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:weightSum="10"
+                android:layout_marginTop="6dp"
+                android:layout_marginHorizontal="16dp"
+                android:orientation="horizontal"
+                android:visibility="gone">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:text="Potongan Voucher"
+                    android:gravity="center_vertical">
+                </TextView>
+                <TextView
+                    android:id="@+id/potongan_voucher"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:text="Rp.100"
+                    android:textColor="#090F47"
+                    android:textStyle="bold"
+                    android:gravity="center_vertical|end">
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:weightSum="10"
+                android:layout_marginTop="6dp"
+                android:layout_marginHorizontal="16dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:text="Status Pembayaran"
+                    android:gravity="center_vertical">
+                </TextView>
+                <TextView
+                    android:id="@+id/sts_byr"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:textColor="#47D764"
+                    android:textStyle="bold"
+                    android:gravity="center_vertical|end">
+                </TextView>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/lacak_pesanan"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2.5"
+                android:layout_marginTop="10dp"
+                android:layout_marginHorizontal="16dp"
+                android:text="Lacak Pesanan"
+                android:textStyle="bold"
+                android:textColor="#FFF"
+                android:textAllCaps="false"
+                android:background="#47D764">
+            </Button>
+
+            <TextView
+                android:id="@+id/batalkan_pesanan"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="Batalkan pesanan?"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:textStyle="bold"
+                android:textColor="#FD7468"
+                android:visibility="visible">
+            </TextView>
+        </LinearLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <ListView
+        android:id="@+id/list_barang"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4.5"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+    </ListView>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#FFF"
+        android:gravity="center"
         android:orientation="vertical"
-        android:layout_margin="10dp"
-        android:background="@drawable/bg_history_detail">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="3"
-            android:layout_margin="10dp"
-            android:weightSum="10"
-            android:orientation="vertical">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="3"
-                android:weightSum="10"
-                android:orientation="vertical">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="5"
-                    android:weightSum="10"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="5"
-                        android:text="ID Transaksi"
-                        android:textColor="#B4B4B4"
-                        android:textStyle="bold"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="10dp">
-                    </TextView>
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="5"
-                        android:text="Jenis Pengiriman Via"
-                        android:textColor="#B4B4B4"
-                        android:textStyle="bold"
-                        android:gravity="center_vertical|end"
-                        android:paddingRight="10dp">
-                    </TextView>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="5"
-                    android:weightSum="10"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:id="@+id/no_ent"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="6"
-                        android:text="INVJ2409/00000/00000000"
-                        android:textColor="#000"
-                        android:textStyle="bold"
-                        android:textSize="15dp"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="10dp">
-                    </TextView>
-                    <TextView
-                        android:id="@+id/pengiriman"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="4"
-                        android:text="Larisso Courier"
-                        android:textColor="#000"
-                        android:textStyle="bold"
-                        android:textSize="15dp"
-                        android:gravity="center_vertical|end"
-                        android:paddingRight="10dp">
-                    </TextView>
-                </LinearLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginTop="10dp"
-                android:layout_weight="3"
-                android:weightSum="10"
-                android:orientation="vertical">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="5"
-                    android:weightSum="10"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="5"
-                        android:text="Tanggal Transaksi"
-                        android:textColor="#B4B4B4"
-                        android:textStyle="bold"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="10dp">
-                    </TextView>
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="5"
-                        android:text="Status Pembayaran"
-                        android:textColor="#B4B4B4"
-                        android:textStyle="bold"
-                        android:gravity="center_vertical|end"
-                        android:paddingRight="10dp">
-                    </TextView>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="5"
-                    android:weightSum="10"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:id="@+id/tgl_transaksi"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="5"
-                        android:text="25/07/2020"
-                        android:textColor="#000"
-                        android:textStyle="bold"
-                        android:textSize="15dp"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="10dp">
-                    </TextView>
-                    <TextView
-                        android:id="@+id/sts_byr"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="5"
-                        android:text="Belum Terbayar"
-                        android:textColor="#000"
-                        android:textStyle="bold"
-                        android:textSize="15dp"
-                        android:gravity="center_vertical|end"
-                        android:paddingRight="10dp">
-                    </TextView>
-                </LinearLayout>
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginTop="10dp"
-                android:layout_weight="3"
-                android:weightSum="10"
-                android:orientation="vertical">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="5"
-                    android:weightSum="10"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="5"
-                        android:text="Waktu Transaksi"
-                        android:textColor="#B4B4B4"
-                        android:textStyle="bold"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="10dp">
-                    </TextView>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="5"
-                    android:weightSum="10"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:id="@+id/waktu_transaksi"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="5"
-                        android:text="14:20"
-                        android:textColor="#000"
-                        android:textStyle="bold"
-                        android:textSize="15dp"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="10dp">
-                    </TextView>
-                </LinearLayout>
-            </LinearLayout>
-        </LinearLayout>
-
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.5"
-            android:layout_marginHorizontal="20dp"
-            android:paddingTop="6dp"
-            android:text="Barang Belanja"
-            android:textStyle="bold"
-            android:textColor="#b4b4b4"
-            android:gravity="center_horizontal|start">
-        </TextView>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="5"
-            android:layout_marginHorizontal="10dp"
-            android:weightSum="10"
-            android:orientation="vertical">
-
-            <ListView
-                android:id="@+id/list_barang"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:divider="#00FFFFFF"></ListView>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.3">
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:layout_marginHorizontal="10dp"
-            android:weightSum="2"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center|end"
-                android:text="Total Transaksi"
-                android:textStyle="bold"
-                android:textColor="#b4b4b4">
-            </TextView>
-            <TextView
-                android:id="@+id/subtotal"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center|end"
-                android:text="Rp. 71.500"
-                android:textStyle="bold"
-                android:textSize="17dp"
-                android:textColor="#000">
-            </TextView>
-        </LinearLayout>
-
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Total Transaksi" />
+        <TextView
+            android:id="@+id/subtotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Rp.100"
+            android:textColor="#000"
+            android:textSize="22sp"
+            android:textStyle="bold"/>
     </LinearLayout>
 
 </LinearLayout>
