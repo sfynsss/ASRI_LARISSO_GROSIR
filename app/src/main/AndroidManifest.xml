@@ -82,9 +82,6 @@
             android:name=".act_register"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".act_detail_barang"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
             android:name=".act_detail_barang_retail"
             android:windowSoftInputMode="adjustPan" />
         <activity
@@ -93,6 +90,9 @@
         <activity
             android:name=".act_login"
             android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".act_search_result"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".act_splash"
             android:windowSoftInputMode="adjustPan">

@@ -2,14 +2,13 @@ package com.asa.larissogrosir.Activity.grosir;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
-
-import androidx.fragment.app.Fragment;
 
 import com.asa.larissogrosir.Api.Api;
 import com.asa.larissogrosir.Api.RetrofitClient;
@@ -22,6 +21,8 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
+import androidx.fragment.app.Fragment;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import es.dmoral.toasty.Toasty;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -89,6 +90,7 @@ public class frm_favourite extends Fragment {
     ListView list_fav;
     ImageView not_found;
     AdapterFavBarang adapterFavBarang;
+    SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -103,6 +105,19 @@ public class frm_favourite extends Fragment {
 
         list_fav = view.findViewById(R.id.list_fav);
         not_found = view.findViewById(R.id.not_found);
+        swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_layout);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getData();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
+                }, 1000);
+            }
+        });
 
         getData();
         not_found.setOnClickListener(new View.OnClickListener() {
@@ -185,7 +200,7 @@ public class frm_favourite extends Fragment {
         tmp_harga_jl = hrg_asli.get(position);
         tmp_gbr = gambar.get(position);
         tmp_kat = kategori.get(position);
-        inputToCart = api.inputToCart(session.getIdUser(), tmp_kd_brg, tmp_nm_brg, tmp_satuan, tmp_harga_jl, tmp_qty, tmp_gbr, tmp_kat);
+        inputToCart = api.inputToCart(session.getIdUser(), tmp_kd_brg, tmp_nm_brg, tmp_satuan, tmp_harga_jl, tmp_qty, tmp_gbr, tmp_kat, session.getKdOutlet());
         inputToCart.enqueue(new Callback<BaseResponse>() {
             @Override
             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
@@ -216,11 +231,6 @@ public class frm_favourite extends Fragment {
             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
                 if (response.isSuccessful()) {
                     pDialog.dismiss();
-//                    final SweetAlertDialog dialog = new SweetAlertDialog(getContext(), SweetAlertDialog.SUCCESS_TYPE);
-//                    dialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
-//                    dialog.setTitleText("Barang berhasil dihapus !!!");
-//                    dialog.setCancelable(false);
-//                    dialog.show();
                     kd_brg.remove(pos);
                     nm_brg.remove(pos);
                     hrg_brg.remove(pos);

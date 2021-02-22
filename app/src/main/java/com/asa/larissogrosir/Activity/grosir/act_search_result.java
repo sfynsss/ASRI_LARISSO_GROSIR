@@ -2,26 +2,27 @@ package com.asa.larissogrosir.Activity.grosir;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.asa.larissogrosir.Api.Api;
 import com.asa.larissogrosir.Api.RetrofitClient;
 import com.asa.larissogrosir.Response.BaseResponse;
 import com.asa.larissogrosir.Session.Session;
 import com.asa.larissogrosir.Table.Barang;
+import com.facebook.shimmer.ShimmerFrameLayout;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import es.dmoral.toasty.Toasty;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -33,6 +34,8 @@ public class act_search_result extends AppCompatActivity {
     Button btn_search;
     RecyclerView list_barang;
     EditText cari_brg;
+    Handler handler = new Handler();
+    ShimmerFrameLayout shimmer;
 
     Api api;
     Session session;
@@ -66,6 +69,7 @@ public class act_search_result extends AppCompatActivity {
         btn_search  = findViewById(R.id.btn_search);
         list_barang = findViewById(R.id.list_barang);
         cari_brg = findViewById(R.id.cari_brg);
+        shimmer = findViewById(R.id.shimmer);
 
         Locale localeID = new Locale("in", "ID");
         formatRupiah = NumberFormat.getCurrencyInstance(localeID);
@@ -79,16 +83,29 @@ public class act_search_result extends AppCompatActivity {
 
         session = new Session(act_search_result.this);
         api = RetrofitClient.createServiceWithAuth(Api.class, session.getToken());
+        shimmer.setVisibility(View.GONE);
         btn_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                list_barang.setVisibility(View.GONE);
+                shimmer.setVisibility(View.VISIBLE);
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        shimmer.stopShimmer();
+                        shimmer.hideShimmer();
+                        shimmer.setVisibility(View.GONE);
+                        list_barang.setVisibility(View.VISIBLE);
+                    }
+                },2850);
                 getData(cari_brg.getText().toString());
             }
         });
+
     }
 
     public void getData(String nama_barang) {
-        getBarang = api.getBarangByName(nama_barang);
+        getBarang = api.getBarangByName(nama_barang, session.getKdOutlet());
         getBarang.enqueue(new Callback<BaseResponse<Barang>>() {
             @Override
             public void onResponse(Call<BaseResponse<Barang>> call, Response<BaseResponse<Barang>> response) {
@@ -157,4 +174,5 @@ public class act_search_result extends AppCompatActivity {
             }
         });
     }
+
 }

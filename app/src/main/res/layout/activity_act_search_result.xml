@@ -6,12 +6,12 @@
     android:layout_height="match_parent"
     android:background="#FFF"
     android:orientation="vertical"
-    tools:context=".Activity.retail.act_search_result">
+    tools:context=".act_search_result">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="120dp"
-        android:background="#FF971E"
+        android:background="#086DEE"
         android:weightSum="10"
         android:orientation="vertical">
         <LinearLayout
@@ -70,6 +70,7 @@
                     android:hint="Ketik nama barang ..."
                     android:text=""
                     android:inputType="text"
+                    android:imeOptions="actionDone"
                     android:textSize="14dp"
                     android:maxLength="50"
                     android:maxLines="1"
@@ -87,28 +88,39 @@
                     android:id="@+id/btn_search"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:background="@drawable/rt_search_ic_search">
+                    android:background="@drawable/grosir_ic_search_blue">
                 </Button>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:gravity="center_vertical">
+        android:layout_height="40dp"
+        android:gravity="center">
         <TextView
+            android:id="@+id/ly_section_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hasil Pencarian : "
-            android:textSize="20dp"
-            android:layout_marginLeft="12dp">
+            android:text="Hasil Pencarian :"
+            android:textColor="#000"
+            android:textSize="16dp"
+            android:layout_marginLeft="16dp">
         </TextView>
-    </LinearLayout>
-
+    </RelativeLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list_barang"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
+        android:layout_height="match_parent"
+        android:visibility="gone">
+    </androidx.recyclerview.widget.RecyclerView>
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true">
+        <include
+            layout="@layout/shimmer_barang_loading">
+        </include>
+    </com.facebook.shimmer.ShimmerFrameLayout>
 </LinearLayout>

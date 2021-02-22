@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Activity.retail.frm_favourite">
+    android:background="#FFF"
+    tools:context=".frm_favourite">
 
     <!-- HEADER START -->
     <LinearLayout
+        android:id="@+id/ly_header"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:weightSum="2"
@@ -15,7 +17,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Barang Favorit"
+            android:text="Barang Favorit Anda"
             android:textSize="20dp"
             android:textColor="#FFFFFF"
             android:textStyle="bold"
@@ -25,37 +27,32 @@
     </LinearLayout>
     <!-- HEADER END -->
 
-    <!-- Sub Judul -->
-    <TextView
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh_layout"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:text="Belanjain barang-barang favorit kamu yuk! \n Dijamin hemat loh!"
-        android:textColor="#000"
-        android:textSize="12dp"
-        android:gravity="center">
-    </TextView>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <ListView
-            android:id="@+id/list_fav"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/ly_header">
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:divider="@null"
-            android:dividerHeight="5dp"></ListView>
+            android:layout_height="match_parent">
+            <ListView
+                android:id="@+id/list_fav"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@null"
+                android:dividerHeight="5dp">
+            </ListView>
+            <ImageView
+                android:id="@+id/not_found"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:src="@drawable/ic_not_found"
+                android:visibility="invisible"
+                android:layout_margin="25dp"
+                android:layout_centerInParent="true">
+            </ImageView>
+        </RelativeLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-        <ImageView
-            android:id="@+id/not_found"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_not_found"
-            android:visibility="invisible"
-            android:layout_margin="25dp"/>
-
-    </RelativeLayout>
-
-</LinearLayout>
+</RelativeLayout>

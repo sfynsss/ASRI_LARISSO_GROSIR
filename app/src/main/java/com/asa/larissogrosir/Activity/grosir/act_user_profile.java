@@ -39,12 +39,12 @@ import retrofit2.Response;
 
 public class act_user_profile extends AppCompatActivity {
 
-    LinearLayout btn_logout, aktifasi;
+    Button btn_logout, btn_aktifasi;
     Session session;
     Api service;
     Call<BaseResponse> logout;
     Call<BaseResponse> aktifasi_user;
-    TextView username, voucher, point, transaksi, alamat, no_telp, email;
+    TextView nama_pengguna, voucher, point, transaksi, alamat, no_telp, email;
 
     private static final int REQUEST_CODE_QR_SCAN = 101;
     Button scan;
@@ -67,12 +67,12 @@ public class act_user_profile extends AppCompatActivity {
         service = RetrofitClient.createServiceWithAuth(Api.class, session.getToken());
 
         btn_logout = findViewById(R.id.btn_logout);
-        aktifasi = findViewById(R.id.aktifasi);
+        btn_aktifasi = findViewById(R.id.btn_aktifasi);
         if (session.getUserActivation() == true) {
-            aktifasi.setVisibility(View.GONE);
+            btn_aktifasi.setVisibility(View.GONE);
         }
 
-        username = findViewById(R.id.username);
+        nama_pengguna = findViewById(R.id.nama_pengguna);
         alamat = findViewById(R.id.alamat);
         no_telp = findViewById(R.id.no_telp);
         email = findViewById(R.id.email);
@@ -80,11 +80,11 @@ public class act_user_profile extends AppCompatActivity {
         if (session.getAlamat() != "null") {
             alamat.setText(session.getAlamat());
         }
-        username.setText(session.getUsername());
-        no_telp.setText(session.telp());
+        nama_pengguna.setText(session.getUsername());
+        no_telp.setText(session.getNoTelp());
         email.setText(session.getEmail());
 
-        aktifasi.setOnClickListener(new View.OnClickListener() {
+        btn_aktifasi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Dexter.withContext(getApplicationContext())
@@ -127,12 +127,12 @@ public class act_user_profile extends AppCompatActivity {
                             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
                                 if (response.isSuccessful()) {
                                     sweetAlertDialog.dismissWithAnimation();
-                                    session.setUserStatus(false, false, "","", "", "", "");
+                                    session.setUserStatus(false, "","", "", "", "", "");
                                     startActivity(new Intent(act_user_profile.this, act_login.class));
                                     finish();
                                 } else {
                                     sweetAlertDialog.dismissWithAnimation();
-                                    session.setUserStatus(false, false, "","", "", "", "");
+                                    session.setUserStatus(false, "","", "", "", "", "");
                                     startActivity(new Intent(act_user_profile.this, act_login.class));
                                     finish();
                                 }
@@ -141,7 +141,7 @@ public class act_user_profile extends AppCompatActivity {
                             @Override
                             public void onFailure(Call<BaseResponse> call, Throwable t) {
                                 sweetAlertDialog.dismissWithAnimation();
-                                session.setUserStatus(false, false, "","", "", "", "");
+                                session.setUserStatus(false, "","", "", "", "","");
                                 startActivity(new Intent(act_user_profile.this, act_login.class));
                                 finish();
                             }

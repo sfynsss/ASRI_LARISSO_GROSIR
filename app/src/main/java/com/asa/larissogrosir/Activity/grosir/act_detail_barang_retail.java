@@ -1,5 +1,6 @@
 package com.asa.larissogrosir.Activity.grosir;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -145,9 +146,16 @@ public class act_detail_barang_retail extends AppCompatActivity {
         harga1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                harga1.setBackground(getResources().getDrawable(R.drawable.bt_round_harga_2));
-                harga2.setBackground(getResources().getDrawable(R.drawable.bt_round_harga_1));
-                harga3.setBackground(getResources().getDrawable(R.drawable.bt_round_harga_1));
+                harga1.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_on));
+                harga2.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
+                harga3.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
+                text_harga_2.setTextColor(Color.parseColor("#26C6DA"));
+                qty_min2.setTextColor(Color.parseColor("#26C6DA"));
+                text_harga_3.setTextColor(Color.parseColor("#A2A3A4"));
+                qty_min3.setTextColor(Color.parseColor("#A2A3A4"));
+                text_harga_4.setTextColor(Color.parseColor("#A2A3A4"));
+                qty_min4.setTextColor(Color.parseColor("#A2A3A4"));
+
                 jml.setText(tmp_qty_min2+"");
                 i = 0;
                 i = Integer.parseInt(jml.getText().toString());
@@ -171,9 +179,10 @@ public class act_detail_barang_retail extends AppCompatActivity {
         harga2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                harga1.setBackground(getResources().getDrawable(R.drawable.bt_round_harga_1));
-                harga2.setBackground(getResources().getDrawable(R.drawable.bt_round_harga_2));
-                harga3.setBackground(getResources().getDrawable(R.drawable.bt_round_harga_1));
+                harga1.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
+                harga2.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_on));
+                harga3.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
+
                 jml.setText(tmp_qty_min3+"");
                 i = 0;
                 i = Integer.parseInt(jml.getText().toString());
@@ -197,9 +206,9 @@ public class act_detail_barang_retail extends AppCompatActivity {
         harga3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                harga1.setBackground(getResources().getDrawable(R.drawable.bt_round_harga_1));
-                harga2.setBackground(getResources().getDrawable(R.drawable.bt_round_harga_1));
-                harga3.setBackground(getResources().getDrawable(R.drawable.bt_round_harga_2));
+                harga1.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
+                harga2.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
+                harga3.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_on));
                 jml.setText(tmp_qty_min4+"");
                 i = 0;
                 i = Integer.parseInt(jml.getText().toString());
@@ -237,30 +246,30 @@ public class act_detail_barang_retail extends AppCompatActivity {
                         sub_total.setText(formatRupiah.format(i * Double.parseDouble(harga_jl4)));
                         harga_simpan = harga_jl4;
 
-                        harga1.setBackground(getResources().getDrawable(R.drawable.bt_round_harga_1));
-                        harga2.setBackground(getResources().getDrawable(R.drawable.bt_round_harga_1));
-                        harga3.setBackground(getResources().getDrawable(R.drawable.bt_round_harga_2));
+                        harga1.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
+                        harga2.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
+                        harga3.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_on));
                     } else if (i >= tmp_qty_min3 && tmp_qty_min3 != 0) {
                         sub_total.setText(formatRupiah.format(i * Double.parseDouble(harga_jl3)));
                         harga_simpan = harga_jl3;
 
-                        harga1.setBackground(getResources().getDrawable(R.drawable.bt_round_harga_1));
-                        harga2.setBackground(getResources().getDrawable(R.drawable.bt_round_harga_2));
-                        harga3.setBackground(getResources().getDrawable(R.drawable.bt_round_harga_1));
+                        harga1.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
+                        harga2.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_on));
+                        harga3.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
                     }  else if (i >= tmp_qty_min2 && tmp_qty_min2 != 0) {
                         sub_total.setText(formatRupiah.format(i * Double.parseDouble(harga_jl2)));
                         harga_simpan = harga_jl2;
 
-                        harga1.setBackground(getResources().getDrawable(R.drawable.bt_round_harga_2));
-                        harga2.setBackground(getResources().getDrawable(R.drawable.bt_round_harga_1));
-                        harga3.setBackground(getResources().getDrawable(R.drawable.bt_round_harga_1));
+                        harga1.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_on));
+                        harga2.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
+                        harga3.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
                     }  else if (i < tmp_qty_min2) {
                         sub_total.setText(formatRupiah.format(i * Double.parseDouble(harga_jl)));
                         harga_simpan = harga_jl;
 
-                        harga1.setBackground(getResources().getDrawable(R.drawable.bt_round_harga_1));
-                        harga2.setBackground(getResources().getDrawable(R.drawable.bt_round_harga_1));
-                        harga3.setBackground(getResources().getDrawable(R.drawable.bt_round_harga_1));
+                        harga1.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
+                        harga2.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
+                        harga3.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
                     }
                 }
             }
@@ -283,30 +292,30 @@ public class act_detail_barang_retail extends AppCompatActivity {
                         sub_total.setText(formatRupiah.format(i * Integer.parseInt(harga_jl4)));
                         harga_simpan = harga_jl4;
 
-                        harga1.setBackground(getResources().getDrawable(R.drawable.bt_round_harga_1));
-                        harga2.setBackground(getResources().getDrawable(R.drawable.bt_round_harga_1));
-                        harga3.setBackground(getResources().getDrawable(R.drawable.bt_round_harga_2));
+                        harga1.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
+                        harga2.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
+                        harga3.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_on));
                     } else if (i >= tmp_qty_min3 && tmp_qty_min3 != 0) {
                         sub_total.setText(formatRupiah.format(i * Integer.parseInt(harga_jl3)));
                         harga_simpan = harga_jl3;
 
-                        harga1.setBackground(getResources().getDrawable(R.drawable.bt_round_harga_1));
-                        harga2.setBackground(getResources().getDrawable(R.drawable.bt_round_harga_2));
-                        harga3.setBackground(getResources().getDrawable(R.drawable.bt_round_harga_1));
+                        harga1.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
+                        harga2.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_on));
+                        harga3.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
                     }  else if (i >= tmp_qty_min2 && tmp_qty_min2 != 0) {
                         sub_total.setText(formatRupiah.format(i * Integer.parseInt(harga_jl2)));
                         harga_simpan = harga_jl2;
 
-                        harga1.setBackground(getResources().getDrawable(R.drawable.bt_round_harga_2));
-                        harga2.setBackground(getResources().getDrawable(R.drawable.bt_round_harga_1));
-                        harga3.setBackground(getResources().getDrawable(R.drawable.bt_round_harga_1));
+                        harga1.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_on));
+                        harga2.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
+                        harga3.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
                     }  else if (i < tmp_qty_min2) {
                         sub_total.setText(formatRupiah.format(i * Integer.parseInt(harga_jl)));
                         harga_simpan = harga_jl;
 
-                        harga1.setBackground(getResources().getDrawable(R.drawable.bt_round_harga_1));
-                        harga2.setBackground(getResources().getDrawable(R.drawable.bt_round_harga_1));
-                        harga3.setBackground(getResources().getDrawable(R.drawable.bt_round_harga_1));
+                        harga1.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
+                        harga2.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
+                        harga3.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
                     }
 
                     jml.setText(i + "");
@@ -326,30 +335,30 @@ public class act_detail_barang_retail extends AppCompatActivity {
                     sub_total.setText(formatRupiah.format(i * Integer.parseInt(harga_jl4)));
                     harga_simpan = harga_jl4;
 
-                    harga1.setBackground(getResources().getDrawable(R.drawable.bt_round_harga_1));
-                    harga2.setBackground(getResources().getDrawable(R.drawable.bt_round_harga_1));
-                    harga3.setBackground(getResources().getDrawable(R.drawable.bt_round_harga_2));
+                    harga1.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
+                    harga2.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
+                    harga3.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_on));
                 } else if (i >= tmp_qty_min3 && tmp_qty_min3 != 0) {
                     sub_total.setText(formatRupiah.format(i * Integer.parseInt(harga_jl3)));
                     harga_simpan = harga_jl3;
 
-                    harga1.setBackground(getResources().getDrawable(R.drawable.bt_round_harga_1));
-                    harga2.setBackground(getResources().getDrawable(R.drawable.bt_round_harga_2));
-                    harga3.setBackground(getResources().getDrawable(R.drawable.bt_round_harga_1));
+                    harga1.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
+                    harga2.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_on));
+                    harga3.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
                 }  else if (i >= tmp_qty_min2 && tmp_qty_min2 != 0) {
                     sub_total.setText(formatRupiah.format(i * Integer.parseInt(harga_jl2)));
                     harga_simpan = harga_jl2;
 
-                    harga1.setBackground(getResources().getDrawable(R.drawable.bt_round_harga_2));
-                    harga2.setBackground(getResources().getDrawable(R.drawable.bt_round_harga_1));
-                    harga3.setBackground(getResources().getDrawable(R.drawable.bt_round_harga_1));
+                    harga1.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_on));
+                    harga2.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
+                    harga3.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
                 }  else if (i < tmp_qty_min2) {
                     sub_total.setText(formatRupiah.format(i * Integer.parseInt(harga_jl)));
                     harga_simpan = harga_jl;
 
-                    harga1.setBackground(getResources().getDrawable(R.drawable.bt_round_harga_1));
-                    harga2.setBackground(getResources().getDrawable(R.drawable.bt_round_harga_1));
-                    harga3.setBackground(getResources().getDrawable(R.drawable.bt_round_harga_1));
+                    harga1.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
+                    harga2.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
+                    harga3.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
                 }
 
                 jml.setText(i + "");
@@ -369,7 +378,7 @@ public class act_detail_barang_retail extends AppCompatActivity {
                 if (jml.getText().toString().equals("0")) {
                     Toasty.warning(act_detail_barang_retail.this, "Jumlah barang harus lebih dari 0", Toast.LENGTH_SHORT).show();
                 } else {
-                    inputToCart = api.inputToCart(session.getIdUser(), kd_brg, nm_brg, satuan, harga_simpan, qty, gbr, kat);
+                    inputToCart = api.inputToCart(session.getIdUser(), kd_brg, nm_brg, satuan, harga_jl, qty, gbr, kat, session.getKdOutlet());
                     inputToCart.enqueue(new Callback<BaseResponse>() {
                         @Override
                         public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {

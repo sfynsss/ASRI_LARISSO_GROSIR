@@ -3,14 +3,13 @@ package com.asa.larissogrosir.Activity.grosir;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.asa.larissogrosir.Session.Session;
 import com.bumptech.glide.Glide;
@@ -20,6 +19,8 @@ import com.bumptech.glide.signature.ObjectKey;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Locale;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Created by Sfyn on 29/06/2018.
@@ -128,30 +129,35 @@ public class AdapterBarang extends RecyclerView.Adapter<AdapterBarang.MyViewHold
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(final MyViewHolder holder, int position) {
         holder.nama_brg.setText(nm_brg.get(position));
         holder.kategori_brg.setText(kat_brg.get(position));
-        if (gambar.get(position).equals("")) {
+        if (gambar.get(position) == null){
             holder.gambar.setImageResource(R.drawable.ic_highlight_off_24);
         } else {
-            RequestOptions requestOptions = new RequestOptions();
-            requestOptions.signature(
-                    new ObjectKey(String.valueOf(System.currentTimeMillis())));
-            Glide.with(mContext)
-                    .setDefaultRequestOptions(requestOptions)
-                    .load("http://"+session.getBaseUrl()+"/storage/" + gambar.get(position) + "").into(holder.gambar);
+            if (gambar.get(position).equals("")) {
+                holder.gambar.setImageResource(R.drawable.ic_highlight_off_24);
+            } else {
+                RequestOptions requestOptions = new RequestOptions();
+                requestOptions.centerInside().signature(
+                        new ObjectKey(String.valueOf(System.currentTimeMillis())));
+                Glide.with(mContext)
+                        .setDefaultRequestOptions(requestOptions)
+                        .load("http://" + session.getBaseUrl() + "/storage/" + gambar.get(position) + "").into(holder.gambar);
 //                    .load("http://asarasa.id/larisso/storage/" + gambar.get(position) + "").into(holder.gambar);
+            }
         }
         if (disc.get(position).equals("0")) {
-            holder.harga_brg.setText(harga_jl.get(position));
+            holder.harga_brg.setText(harga_jl.get(position).replace(",00", ""));
             holder.disc.setVisibility(View.INVISIBLE);
             holder.harga_disc.setVisibility(View.INVISIBLE);
         } else {
-            holder.harga_brg.setText(formatRupiah.format((Double.parseDouble(harga_asli.get(position)) - Double.parseDouble(harga_disc.get(position)))));
+            holder.harga_brg.setText(formatRupiah.format((Double.parseDouble(harga_asli.get(position)) - Double.parseDouble(harga_disc.get(position)))).replace(",00", ""));
             holder.disc.setVisibility(View.VISIBLE);
+            holder.harga_brg.setTextColor(Color.parseColor("#47D764"));
             holder.harga_disc.setVisibility(View.VISIBLE);
             holder.disc_value.setText("Disc "+disc.get(position)+"%");
-            holder.harga_disc_value.setText(harga_jl.get(position));
+            holder.harga_disc_value.setText(harga_jl.get(position).replace(",00", ""));
         }
     }
 
@@ -165,8 +171,8 @@ public class AdapterBarang extends RecyclerView.Adapter<AdapterBarang.MyViewHold
         TextView nama_brg;
         TextView harga_brg;
         TextView kategori_brg;
-        ImageView gambar;
-        LinearLayout disc, harga_disc;
+        ImageView gambar, fav;
+        RelativeLayout disc, harga_disc;
         TextView disc_value, harga_disc_value;
 
         public MyViewHolder(View itemView) {
@@ -176,10 +182,11 @@ public class AdapterBarang extends RecyclerView.Adapter<AdapterBarang.MyViewHold
             harga_brg = (TextView) itemView.findViewById(R.id.harga_barang);
             kategori_brg = (TextView) itemView.findViewById(R.id.kategori_barang);
             gambar = (ImageView) itemView.findViewById(R.id.gambar);
-            disc = (LinearLayout) itemView.findViewById(R.id.disc);
-            harga_disc = (LinearLayout) itemView.findViewById(R.id.harga_disc);
+            disc = (RelativeLayout) itemView.findViewById(R.id.disc);
+            harga_disc = (RelativeLayout) itemView.findViewById(R.id.harga_disc);
             disc_value = (TextView) itemView.findViewById(R.id.disc_value);
             harga_disc_value = (TextView) itemView.findViewById(R.id.harga_disc_value);
+            fav = (ImageView) itemView.findViewById(R.id.fav);
         }
     }
 
