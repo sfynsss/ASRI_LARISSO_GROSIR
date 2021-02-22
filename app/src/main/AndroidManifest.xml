@@ -26,7 +26,10 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:replace="android:allowBackup">
-        <activity android:name=".act_point"></activity>
+        <activity android:name=".act_lupa_password"></activity>
+        <activity android:name=".act_pilih_outlet" />
+        <activity android:name=".act_browse_diskon" />
+        <activity android:name=".act_point" />
 
         <service
             android:name="com.asa.larissogrosir.Activity.FirebaseCloudeMessaging"

@@ -1,8 +1,5 @@
 package com.asa.larissogrosir.Activity.grosir;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -26,6 +23,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import es.dmoral.toasty.Toasty;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -34,25 +33,26 @@ import retrofit2.Response;
 public class act_login extends AppCompatActivity {
 
     Button btn_masuk;
-    TextView btn_daftar;
-    ImageView show_password;
-    Boolean showPasswordClicked = false;
+    TextView btn_daftar, lupa_password;
     EditText username, password;
     ProgressBar progressBar;
     Api api, api2;
     Call<BaseResponse> updateToken;
     Call<UserResponse> call;
     Session session;
+    ImageView show_password;
+    Boolean showPasswordClicked = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_act_login_retail);
+        setContentView(R.layout.activity_act_login);
 
         btn_masuk = findViewById(R.id.btn_masuk);
-        btn_daftar = findViewById(R.id.daftar);
+        btn_daftar = findViewById(R.id.btn_daftar);
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
+        lupa_password = findViewById(R.id.lupa_password);
         progressBar = findViewById(R.id.progress_login);
 
         session = new Session(this);
@@ -79,17 +79,15 @@ public class act_login extends AppCompatActivity {
                         @Override
                         public void onResponse(Call<UserResponse> call, final Response<UserResponse> response) {
                             if (response.isSuccessful()) {
+                                if (response.body().getUser().getEmailActivation().equals("1")) {
 //                                    Toasty.success(getApplicationContext(), "Selamat Datang " + response.body().getUser().getName(), Toast.LENGTH_SHORT).show();
-                                if (response.body().getUser().getEmail_activation().equals("1")) {
-                                    session.setUserActivation(true);
-                                } else {
-                                    session.setUserActivation(false);
-                                }
-                                    session.setUserStatus(true, true, response.body().getUser().getId() + "",
+                                    session.setUserStatus(true, response.body().getUser().getId() + "",
                                             response.body().getUser().getName() + "",
                                             response.body().getUser().getEmail() + "",
                                             response.body().getUser().getApiToken() + "",
-                                            response.body().getUser().getOtoritas() + "");
+                                            response.body().getUser().getOtoritas() + "",
+                                            response.body().getUser().getJNSKELAMIN()+"");
+                                    session.setKdCust(response.body().getUser().getKDCUST());
                                     String latitude = "";
                                     String longitude = "";
                                     if(response.body().getUser().getLatitude() == null){
@@ -99,6 +97,7 @@ public class act_login extends AppCompatActivity {
                                         latitude = response.body().getUser().getLatitude().toString();
                                         longitude = response.body().getUser().getLongitude().toString();
                                     }
+                                    session.setUserActivation(true);
                                     session.setAlamat(
                                             response.body().getUser().getNamaPenerima(),
                                             response.body().getUser().getProvinsi(),
@@ -125,10 +124,11 @@ public class act_login extends AppCompatActivity {
                                                             @Override
                                                             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
                                                                 if (response.isSuccessful()) {
-                                                                    startActivity(new Intent(act_login.this, act_home.class));
+//                                                                    startActivity(new Intent(act_login_retail.this, act_home_retail.class));
+                                                                    startActivity(new Intent(act_login.this, act_pilih_outlet.class));
                                                                     finish();
                                                                 } else {
-                                                                    startActivity(new Intent(act_login.this, act_home.class));
+                                                                    startActivity(new Intent(act_login.this, act_pilih_outlet.class));
                                                                     finish();
                                                                 }
                                                             }
@@ -143,7 +143,21 @@ public class act_login extends AppCompatActivity {
                                                     }
                                                 }
                                             });
-
+                                } else {
+                                    session.setUserStatus(true, response.body().getUser().getId()+"",
+                                            response.body().getUser().getName()+"",
+                                            response.body().getUser().getEmail()+"",
+                                            response.body().getUser().getApiToken()+"",
+                                            response.body().getUser().getOtoritas()+"",
+                                            response.body().getUser().getJNSKELAMIN()+"");
+                                    session.setUserActivation(false);
+                                    Intent it = new Intent(act_login.this, act_otp_validation.class);
+                                    it.putExtra("email", response.body().getUser().getEmail()+"");
+                                    startActivity(it);
+                                    finish();
+                                    Toasty.error(getApplicationContext(), "Email belum di aktifasi, silahkan cek e-mail untuk aktifasi.", Toast.LENGTH_SHORT).show();
+                                    progressBar.setVisibility(View.INVISIBLE);
+                                }
                             } else {
 //                                Toasty.error(getApplicationContext(), "Error Bro"+response.code(), Toast.LENGTH_SHORT).show();
                                 if (response.code() == 401) {
@@ -158,10 +172,18 @@ public class act_login extends AppCompatActivity {
 
                         @Override
                         public void onFailure(Call<UserResponse> call, Throwable t) {
+                            progressBar.setVisibility(View.INVISIBLE);
                             Toasty.error(act_login.this, "Ini error juga bos" + t.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
+            }
+        });
+
+        lupa_password.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(act_login.this, act_lupa_password.class));
             }
         });
 
@@ -196,5 +218,4 @@ public class act_login extends AppCompatActivity {
         }
 
     };
-
 }
