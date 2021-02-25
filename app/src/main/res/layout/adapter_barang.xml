@@ -32,7 +32,7 @@
                     android:layout_height="40dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginLeft="8dp"
-                    android:background="@drawable/rt_ic_fav_off">
+                    android:background="@drawable/gr_ic_fav_off">
                 </ImageView>
                 <RelativeLayout
                     android:id="@+id/disc"

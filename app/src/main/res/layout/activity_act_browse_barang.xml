@@ -46,7 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="42dp"
             android:layout_marginHorizontal="10dp"
-            android:background="@drawable/rt_bg_white_round">
+            android:background="@drawable/gr_bg_white_round">
             <EditText
                 android:id="@+id/cari_brg"
                 android:layout_width="match_parent"
@@ -71,7 +71,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerInParent="true"
                 android:layout_marginRight="13dp"
-                android:background="@drawable/grosir_ic_search_blue">
+                android:background="@drawable/gr_ic_search_blue">
             </Button>
         </RelativeLayout>
     </RelativeLayout>

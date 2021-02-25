@@ -38,7 +38,7 @@ public class act_detail_barang_retail extends AppCompatActivity {
     TextView text_harga_2, text_harga_3, text_harga_4, qty_min2, qty_min3, qty_min4, sub_total;
     EditText jml;
     Button btn_min, btn_plus, ke_cart, ke_wishlist;
-    LinearLayout harga1, harga2, harga3;
+    LinearLayout tampil_harga_bertingkat, harga1, harga2, harga3;
     NumberFormat formatRupiah;
     int i = 1;
     String kd_brg = "", nm_brg = "", satuan = "", harga_jl = "", harga_jl2 = "", harga_jl3 = "", harga_jl4 = "", qty = "", gbr = "", kat = "";
@@ -84,6 +84,7 @@ public class act_detail_barang_retail extends AppCompatActivity {
         harga2 = findViewById(R.id.harga_2);
         harga3 = findViewById(R.id.harga_3);
         sub_total = findViewById(R.id.sub_total);
+        tampil_harga_bertingkat = findViewById(R.id.tampil_harga_bertingkat);
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -142,6 +143,9 @@ public class act_detail_barang_retail extends AppCompatActivity {
         if (harga_jl4.equals("0")) {
             harga3.setVisibility(View.GONE);
         }
+        if (harga_jl2.equals("0") && harga_jl3.equals("0") && harga_jl4.equals("0")){
+            tampil_harga_bertingkat.setVisibility(View.GONE);
+        }
 
         harga1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -149,12 +153,12 @@ public class act_detail_barang_retail extends AppCompatActivity {
                 harga1.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_on));
                 harga2.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
                 harga3.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
-                text_harga_2.setTextColor(Color.parseColor("#26C6DA"));
-                qty_min2.setTextColor(Color.parseColor("#26C6DA"));
-                text_harga_3.setTextColor(Color.parseColor("#A2A3A4"));
-                qty_min3.setTextColor(Color.parseColor("#A2A3A4"));
-                text_harga_4.setTextColor(Color.parseColor("#A2A3A4"));
-                qty_min4.setTextColor(Color.parseColor("#A2A3A4"));
+                text_harga_2.setTextColor(Color.parseColor("#FFFFFF"));
+                qty_min2.setTextColor(Color.parseColor("#FFFFFF"));
+                text_harga_3.setTextColor(Color.parseColor("#0095DA"));
+                qty_min3.setTextColor(Color.parseColor("#0095DA"));
+                text_harga_4.setTextColor(Color.parseColor("#0095DA"));
+                qty_min4.setTextColor(Color.parseColor("#0095DA"));
 
                 jml.setText(tmp_qty_min2+"");
                 i = 0;
@@ -182,6 +186,12 @@ public class act_detail_barang_retail extends AppCompatActivity {
                 harga1.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
                 harga2.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_on));
                 harga3.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
+                text_harga_2.setTextColor(Color.parseColor("#0095DA"));
+                qty_min2.setTextColor(Color.parseColor("#0095DA"));
+                text_harga_3.setTextColor(Color.parseColor("#FFFFFF"));
+                qty_min3.setTextColor(Color.parseColor("#FFFFFF"));
+                text_harga_4.setTextColor(Color.parseColor("#0095DA"));
+                qty_min4.setTextColor(Color.parseColor("#0095DA"));
 
                 jml.setText(tmp_qty_min3+"");
                 i = 0;
@@ -209,6 +219,13 @@ public class act_detail_barang_retail extends AppCompatActivity {
                 harga1.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
                 harga2.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
                 harga3.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_on));
+                text_harga_2.setTextColor(Color.parseColor("#0095DA"));
+                qty_min2.setTextColor(Color.parseColor("#0095DA"));
+                text_harga_3.setTextColor(Color.parseColor("#0095DA"));
+                qty_min3.setTextColor(Color.parseColor("#0095DA"));
+                text_harga_4.setTextColor(Color.parseColor("#FFFFFF"));
+                qty_min4.setTextColor(Color.parseColor("#FFFFFF"));
+
                 jml.setText(tmp_qty_min4+"");
                 i = 0;
                 i = Integer.parseInt(jml.getText().toString());
@@ -245,24 +262,42 @@ public class act_detail_barang_retail extends AppCompatActivity {
                     if (i >= tmp_qty_min4 && tmp_qty_min4 != 0) {
                         sub_total.setText(formatRupiah.format(i * Double.parseDouble(harga_jl4)));
                         harga_simpan = harga_jl4;
-
                         harga1.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
                         harga2.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
                         harga3.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_on));
+                        text_harga_2.setTextColor(Color.parseColor("#0095DA"));
+                        qty_min2.setTextColor(Color.parseColor("#0095DA"));
+                        text_harga_3.setTextColor(Color.parseColor("#0095DA"));
+                        qty_min3.setTextColor(Color.parseColor("#0095DA"));
+                        text_harga_4.setTextColor(Color.parseColor("#FFFFFF"));
+                        qty_min4.setTextColor(Color.parseColor("#FFFFFF"));
+
                     } else if (i >= tmp_qty_min3 && tmp_qty_min3 != 0) {
                         sub_total.setText(formatRupiah.format(i * Double.parseDouble(harga_jl3)));
                         harga_simpan = harga_jl3;
-
                         harga1.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
                         harga2.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_on));
                         harga3.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
+                        text_harga_2.setTextColor(Color.parseColor("#0095DA"));
+                        qty_min2.setTextColor(Color.parseColor("#0095DA"));
+                        text_harga_3.setTextColor(Color.parseColor("#FFFFFF"));
+                        qty_min3.setTextColor(Color.parseColor("#FFFFFF"));
+                        text_harga_4.setTextColor(Color.parseColor("#0095DA"));
+                        qty_min4.setTextColor(Color.parseColor("#0095DA"));
+
                     }  else if (i >= tmp_qty_min2 && tmp_qty_min2 != 0) {
                         sub_total.setText(formatRupiah.format(i * Double.parseDouble(harga_jl2)));
                         harga_simpan = harga_jl2;
-
                         harga1.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_on));
                         harga2.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
                         harga3.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
+                        text_harga_2.setTextColor(Color.parseColor("#FFFFFF"));
+                        qty_min2.setTextColor(Color.parseColor("#FFFFFF"));
+                        text_harga_3.setTextColor(Color.parseColor("#0095DA"));
+                        qty_min3.setTextColor(Color.parseColor("#0095DA"));
+                        text_harga_4.setTextColor(Color.parseColor("#0095DA"));
+                        qty_min4.setTextColor(Color.parseColor("#0095DA"));
+
                     }  else if (i < tmp_qty_min2) {
                         sub_total.setText(formatRupiah.format(i * Double.parseDouble(harga_jl)));
                         harga_simpan = harga_jl;
@@ -270,6 +305,12 @@ public class act_detail_barang_retail extends AppCompatActivity {
                         harga1.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
                         harga2.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
                         harga3.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
+                        text_harga_2.setTextColor(Color.parseColor("#0095DA"));
+                        qty_min2.setTextColor(Color.parseColor("#0095DA"));
+                        text_harga_3.setTextColor(Color.parseColor("#0095DA"));
+                        qty_min3.setTextColor(Color.parseColor("#0095DA"));
+                        text_harga_4.setTextColor(Color.parseColor("#0095DA"));
+                        qty_min4.setTextColor(Color.parseColor("#0095DA"));
                     }
                 }
             }
@@ -291,31 +332,54 @@ public class act_detail_barang_retail extends AppCompatActivity {
                     if (i >= tmp_qty_min4 && tmp_qty_min4 != 0) {
                         sub_total.setText(formatRupiah.format(i * Integer.parseInt(harga_jl4)));
                         harga_simpan = harga_jl4;
-
                         harga1.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
                         harga2.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
                         harga3.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_on));
+                        text_harga_2.setTextColor(Color.parseColor("#0095DA"));
+                        qty_min2.setTextColor(Color.parseColor("#0095DA"));
+                        text_harga_3.setTextColor(Color.parseColor("#0095DA"));
+                        qty_min3.setTextColor(Color.parseColor("#0095DA"));
+                        text_harga_4.setTextColor(Color.parseColor("#FFFFFF"));
+                        qty_min4.setTextColor(Color.parseColor("#FFFFFF"));
+
                     } else if (i >= tmp_qty_min3 && tmp_qty_min3 != 0) {
                         sub_total.setText(formatRupiah.format(i * Integer.parseInt(harga_jl3)));
                         harga_simpan = harga_jl3;
-
                         harga1.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
                         harga2.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_on));
                         harga3.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
+                        text_harga_2.setTextColor(Color.parseColor("#0095DA"));
+                        qty_min2.setTextColor(Color.parseColor("#0095DA"));
+                        text_harga_3.setTextColor(Color.parseColor("#FFFFFF"));
+                        qty_min3.setTextColor(Color.parseColor("#FFFFFF"));
+                        text_harga_4.setTextColor(Color.parseColor("#0095DA"));
+                        qty_min4.setTextColor(Color.parseColor("#0095DA"));
+
                     }  else if (i >= tmp_qty_min2 && tmp_qty_min2 != 0) {
                         sub_total.setText(formatRupiah.format(i * Integer.parseInt(harga_jl2)));
                         harga_simpan = harga_jl2;
-
                         harga1.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_on));
                         harga2.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
                         harga3.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
+                        text_harga_2.setTextColor(Color.parseColor("#FFFFFF"));
+                        qty_min2.setTextColor(Color.parseColor("#FFFFFF"));
+                        text_harga_3.setTextColor(Color.parseColor("#0095DA"));
+                        qty_min3.setTextColor(Color.parseColor("#0095DA"));
+                        text_harga_4.setTextColor(Color.parseColor("#0095DA"));
+                        qty_min4.setTextColor(Color.parseColor("#0095DA"));
+
                     }  else if (i < tmp_qty_min2) {
                         sub_total.setText(formatRupiah.format(i * Integer.parseInt(harga_jl)));
                         harga_simpan = harga_jl;
-
                         harga1.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
                         harga2.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
                         harga3.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
+                        text_harga_2.setTextColor(Color.parseColor("#0095DA"));
+                        qty_min2.setTextColor(Color.parseColor("#0095DA"));
+                        text_harga_3.setTextColor(Color.parseColor("#0095DA"));
+                        qty_min3.setTextColor(Color.parseColor("#0095DA"));
+                        text_harga_4.setTextColor(Color.parseColor("#0095DA"));
+                        qty_min4.setTextColor(Color.parseColor("#0095DA"));
                     }
 
                     jml.setText(i + "");
@@ -334,31 +398,54 @@ public class act_detail_barang_retail extends AppCompatActivity {
                 if (i >= tmp_qty_min4 && tmp_qty_min4 != 0) {
                     sub_total.setText(formatRupiah.format(i * Integer.parseInt(harga_jl4)));
                     harga_simpan = harga_jl4;
-
                     harga1.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
                     harga2.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
                     harga3.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_on));
+                    text_harga_2.setTextColor(Color.parseColor("#0095DA"));
+                    qty_min2.setTextColor(Color.parseColor("#0095DA"));
+                    text_harga_3.setTextColor(Color.parseColor("#0095DA"));
+                    qty_min3.setTextColor(Color.parseColor("#0095DA"));
+                    text_harga_4.setTextColor(Color.parseColor("#FFFFFF"));
+                    qty_min4.setTextColor(Color.parseColor("#FFFFFF"));
+
                 } else if (i >= tmp_qty_min3 && tmp_qty_min3 != 0) {
                     sub_total.setText(formatRupiah.format(i * Integer.parseInt(harga_jl3)));
                     harga_simpan = harga_jl3;
-
                     harga1.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
                     harga2.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_on));
                     harga3.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
+                    text_harga_2.setTextColor(Color.parseColor("#0095DA"));
+                    qty_min2.setTextColor(Color.parseColor("#0095DA"));
+                    text_harga_3.setTextColor(Color.parseColor("#FFFFFF"));
+                    qty_min3.setTextColor(Color.parseColor("#FFFFFF"));
+                    text_harga_4.setTextColor(Color.parseColor("#0095DA"));
+                    qty_min4.setTextColor(Color.parseColor("#0095DA"));
+
                 }  else if (i >= tmp_qty_min2 && tmp_qty_min2 != 0) {
                     sub_total.setText(formatRupiah.format(i * Integer.parseInt(harga_jl2)));
                     harga_simpan = harga_jl2;
-
                     harga1.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_on));
                     harga2.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
                     harga3.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
+                    text_harga_2.setTextColor(Color.parseColor("#FFFFFF"));
+                    qty_min2.setTextColor(Color.parseColor("#FFFFFF"));
+                    text_harga_3.setTextColor(Color.parseColor("#0095DA"));
+                    qty_min3.setTextColor(Color.parseColor("#0095DA"));
+                    text_harga_4.setTextColor(Color.parseColor("#0095DA"));
+                    qty_min4.setTextColor(Color.parseColor("#0095DA"));
+
                 }  else if (i < tmp_qty_min2) {
                     sub_total.setText(formatRupiah.format(i * Integer.parseInt(harga_jl)));
                     harga_simpan = harga_jl;
-
                     harga1.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
                     harga2.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
                     harga3.setBackground(getResources().getDrawable(R.drawable.gr_toggle_harga_off));
+                    text_harga_2.setTextColor(Color.parseColor("#0095DA"));
+                    qty_min2.setTextColor(Color.parseColor("#0095DA"));
+                    text_harga_3.setTextColor(Color.parseColor("#0095DA"));
+                    qty_min3.setTextColor(Color.parseColor("#0095DA"));
+                    text_harga_4.setTextColor(Color.parseColor("#0095DA"));
+                    qty_min4.setTextColor(Color.parseColor("#0095DA"));
                 }
 
                 jml.setText(i + "");

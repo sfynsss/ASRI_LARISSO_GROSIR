@@ -368,7 +368,7 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/rt_bg_white_round"
+                    android:background="@drawable/gr_bg_white_round"
                     android:hint="Tulis catatan / keterangan pesanan anda bila perlu"
                     android:textSize="12dp"
                     android:paddingLeft="16dp">

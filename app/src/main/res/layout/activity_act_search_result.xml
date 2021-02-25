@@ -61,7 +61,7 @@
                 android:layout_weight="8"
                 android:layout_marginLeft="10dp"
                 android:layout_marginVertical="10dp"
-                android:background="@drawable/rt_bg_white_round">
+                android:background="@drawable/gr_bg_white_round">
                 <EditText
                     android:id="@+id/cari_brg"
                     android:layout_width="match_parent"
@@ -88,7 +88,7 @@
                     android:id="@+id/btn_search"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:background="@drawable/grosir_ic_search_blue">
+                    android:background="@drawable/gr_ic_search_blue">
                 </Button>
             </LinearLayout>
         </LinearLayout>
