@@ -84,14 +84,14 @@ public class act_history_transaksi extends AppCompatActivity {
             public void onClick(View view) {
                 getDataTransaksi = api.getDataTransaksi(session.getIdUser());
                 tampilTransaksi();
-                filter_semua_diskon.setBackgroundResource(R.drawable.rt_filter_bt_on_2);
+                filter_semua_diskon.setBackgroundResource(R.drawable.gr_filter_bt_on_2);
                 filter_semua_diskon.setTextColor(Color.parseColor("#FFFFFF"));
-                filter_transaksi_berhasil.setBackgroundResource(R.drawable.rt_filter_bt_off_2);
-                filter_transaksi_berhasil.setTextColor(Color.parseColor("#FFA722"));
-                filter_menunggu_pembayaran.setBackgroundResource(R.drawable.rt_filter_bt_off_2);
-                filter_menunggu_pembayaran.setTextColor(Color.parseColor("#FFA722"));
-                filter_transaksi_dibatalkan.setBackgroundResource(R.drawable.rt_filter_bt_off_2);
-                filter_transaksi_dibatalkan.setTextColor(Color.parseColor("#FFA722"));
+                filter_transaksi_berhasil.setBackgroundResource(R.drawable.gr_filter_bt_off_2);
+                filter_transaksi_berhasil.setTextColor(Color.parseColor("#26C6DA"));
+                filter_menunggu_pembayaran.setBackgroundResource(R.drawable.gr_filter_bt_off_2);
+                filter_menunggu_pembayaran.setTextColor(Color.parseColor("#26C6DA"));
+                filter_transaksi_dibatalkan.setBackgroundResource(R.drawable.gr_filter_bt_off_2);
+                filter_transaksi_dibatalkan.setTextColor(Color.parseColor("#26C6DA"));
                 Toasty.success(act_history_transaksi.this, "Semua Transaksi", Toast.LENGTH_SHORT).show();
             }
         });
@@ -101,14 +101,14 @@ public class act_history_transaksi extends AppCompatActivity {
             public void onClick(View view) {
                 getDataTransaksiSukses = api.getDataTransaksiSukses(session.getIdUser());
                 tampilTransaksiSukses();
-                filter_transaksi_berhasil.setBackgroundResource(R.drawable.rt_filter_bt_on_2);
+                filter_transaksi_berhasil.setBackgroundResource(R.drawable.gr_filter_bt_on_2);
                 filter_transaksi_berhasil.setTextColor(Color.parseColor("#FFFFFF"));
-                filter_semua_diskon.setBackgroundResource(R.drawable.rt_filter_bt_off_2);
-                filter_semua_diskon.setTextColor(Color.parseColor("#FFA722"));
-                filter_menunggu_pembayaran.setBackgroundResource(R.drawable.rt_filter_bt_off_2);
-                filter_menunggu_pembayaran.setTextColor(Color.parseColor("#FFA722"));
-                filter_transaksi_dibatalkan.setBackgroundResource(R.drawable.rt_filter_bt_off_2);
-                filter_transaksi_dibatalkan.setTextColor(Color.parseColor("#FFA722"));
+                filter_semua_diskon.setBackgroundResource(R.drawable.gr_filter_bt_off_2);
+                filter_semua_diskon.setTextColor(Color.parseColor("#26C6DA"));
+                filter_menunggu_pembayaran.setBackgroundResource(R.drawable.gr_filter_bt_off_2);
+                filter_menunggu_pembayaran.setTextColor(Color.parseColor("#26C6DA"));
+                filter_transaksi_dibatalkan.setBackgroundResource(R.drawable.gr_filter_bt_off_2);
+                filter_transaksi_dibatalkan.setTextColor(Color.parseColor("#26C6DA"));
                 Toasty.success(act_history_transaksi.this, "Sortir Transaksi Berhasil", Toast.LENGTH_SHORT).show();
             }
         });
@@ -118,14 +118,14 @@ public class act_history_transaksi extends AppCompatActivity {
             public void onClick(View view) {
                 getDataTransaksiPending = api.getDataTransaksiPending(session.getIdUser());
                 tampilTransaksiPending();
-                filter_menunggu_pembayaran.setBackgroundResource(R.drawable.rt_filter_bt_on_2);
+                filter_menunggu_pembayaran.setBackgroundResource(R.drawable.gr_filter_bt_on_2);
                 filter_menunggu_pembayaran.setTextColor(Color.parseColor("#FFFFFF"));
-                filter_semua_diskon.setBackgroundResource(R.drawable.rt_filter_bt_off_2);
-                filter_semua_diskon.setTextColor(Color.parseColor("#FFA722"));
-                filter_transaksi_berhasil.setBackgroundResource(R.drawable.rt_filter_bt_off_2);
-                filter_transaksi_berhasil.setTextColor(Color.parseColor("#FFA722"));
-                filter_transaksi_dibatalkan.setBackgroundResource(R.drawable.rt_filter_bt_off_2);
-                filter_transaksi_dibatalkan.setTextColor(Color.parseColor("#FFA722"));
+                filter_semua_diskon.setBackgroundResource(R.drawable.gr_filter_bt_off_2);
+                filter_semua_diskon.setTextColor(Color.parseColor("#26C6DA"));
+                filter_transaksi_berhasil.setBackgroundResource(R.drawable.gr_filter_bt_off_2);
+                filter_transaksi_berhasil.setTextColor(Color.parseColor("#26C6DA"));
+                filter_transaksi_dibatalkan.setBackgroundResource(R.drawable.gr_filter_bt_off_2);
+                filter_transaksi_dibatalkan.setTextColor(Color.parseColor("#26C6DA"));
                 Toasty.success(act_history_transaksi.this, "Sortir Menunggu Pembayaran", Toast.LENGTH_SHORT).show();
             }
         });
@@ -135,14 +135,14 @@ public class act_history_transaksi extends AppCompatActivity {
             public void onClick(View view) {
                 getDataTransaksiBatal = api.getDataTransaksiBatal(session.getIdUser());
                 tampilTransaksiBatal();
-                filter_transaksi_dibatalkan.setBackgroundResource(R.drawable.rt_filter_bt_on_2);
+                filter_transaksi_dibatalkan.setBackgroundResource(R.drawable.gr_filter_bt_on_2);
                 filter_transaksi_dibatalkan.setTextColor(Color.parseColor("#FFFFFF"));
-                filter_semua_diskon.setBackgroundResource(R.drawable.rt_filter_bt_off_2);
-                filter_semua_diskon.setTextColor(Color.parseColor("#FFA722"));
-                filter_transaksi_berhasil.setBackgroundResource(R.drawable.rt_filter_bt_off_2);
-                filter_transaksi_berhasil.setTextColor(Color.parseColor("#FFA722"));
-                filter_menunggu_pembayaran.setBackgroundResource(R.drawable.rt_filter_bt_off_2);
-                filter_menunggu_pembayaran.setTextColor(Color.parseColor("#FFA722"));
+                filter_semua_diskon.setBackgroundResource(R.drawable.gr_filter_bt_off_2);
+                filter_semua_diskon.setTextColor(Color.parseColor("#26C6DA"));
+                filter_transaksi_berhasil.setBackgroundResource(R.drawable.gr_filter_bt_off_2);
+                filter_transaksi_berhasil.setTextColor(Color.parseColor("#26C6DA"));
+                filter_menunggu_pembayaran.setBackgroundResource(R.drawable.gr_filter_bt_off_2);
+                filter_menunggu_pembayaran.setTextColor(Color.parseColor("#26C6DA"));
                 Toasty.success(act_history_transaksi.this, "Sortir Transaksi Dibatalkan", Toast.LENGTH_SHORT).show();
             }
         });

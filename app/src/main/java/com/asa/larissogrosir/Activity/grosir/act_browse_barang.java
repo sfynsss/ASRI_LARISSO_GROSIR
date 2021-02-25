@@ -107,9 +107,9 @@ public class act_browse_barang extends AppCompatActivity {
                 filter_hrg_rendah.setBackgroundResource(R.drawable.gr_filter_bt_on);
                 filter_hrg_rendah.setTextColor(Color.parseColor("#FFFFFF"));
                 filter_hrg_diskon.setBackgroundResource(R.drawable.gr_filter_bt_off);
-                filter_hrg_diskon.setTextColor(Color.parseColor("#FFA722"));
+                filter_hrg_diskon.setTextColor(Color.parseColor("#26C6DA"));
                 filter_hrg_tinggi.setBackgroundResource(R.drawable.gr_filter_bt_off);
-                filter_hrg_tinggi.setTextColor(Color.parseColor("#FFA722"));
+                filter_hrg_tinggi.setTextColor(Color.parseColor("#26C6DA"));
                 Toasty.success(act_browse_barang.this, "Disortir berdasarkan harga terendah ", Toast.LENGTH_SHORT).show();
             }
         });
@@ -122,9 +122,9 @@ public class act_browse_barang extends AppCompatActivity {
                 filter_hrg_tinggi.setBackgroundResource(R.drawable.gr_filter_bt_on);
                 filter_hrg_tinggi.setTextColor(Color.parseColor("#FFFFFF"));
                 filter_hrg_rendah.setBackgroundResource(R.drawable.gr_filter_bt_off);
-                filter_hrg_rendah.setTextColor(Color.parseColor("#FFA722"));
+                filter_hrg_rendah.setTextColor(Color.parseColor("#26C6DA"));
                 filter_hrg_diskon.setBackgroundResource(R.drawable.gr_filter_bt_off);
-                filter_hrg_diskon.setTextColor(Color.parseColor("#FFA722"));
+                filter_hrg_diskon.setTextColor(Color.parseColor("#26C6DA"));
                 Toasty.success(act_browse_barang.this, "Disortir berdasarkan harga tertinggi ", Toast.LENGTH_SHORT).show();
             }
         });
@@ -137,9 +137,9 @@ public class act_browse_barang extends AppCompatActivity {
                 filter_hrg_diskon.setBackgroundResource(R.drawable.gr_filter_bt_on);
                 filter_hrg_diskon.setTextColor(Color.parseColor("#FFFFFF"));
                 filter_hrg_tinggi.setBackgroundResource(R.drawable.gr_filter_bt_off);
-                filter_hrg_tinggi.setTextColor(Color.parseColor("#FFA722"));
+                filter_hrg_tinggi.setTextColor(Color.parseColor("#26C6DA"));
                 filter_hrg_rendah.setBackgroundResource(R.drawable.gr_filter_bt_off);
-                filter_hrg_rendah.setTextColor(Color.parseColor("#FFA722"));
+                filter_hrg_rendah.setTextColor(Color.parseColor("#26C6DA"));
                 Toasty.success(act_browse_barang.this, "Disortir berdasarkan promo ", Toast.LENGTH_SHORT).show();
             }
         });

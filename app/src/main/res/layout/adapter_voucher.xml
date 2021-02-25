@@ -23,7 +23,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="110dp"
-                android:background="@drawable/grosir_voucher_bgvoucher">
+                android:background="@drawable/gr_voucher_bg">
                 <TextView
                     android:id="@+id/judul_voucher"
                     android:layout_width="wrap_content"
@@ -73,8 +73,8 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginRight="8dp"
                     android:layout_alignParentEnd="true"
-                    app:cardCornerRadius="10dp"
-                    app:cardBackgroundColor="#FFC000">
+                    app:cardCornerRadius="5dp"
+                    app:cardBackgroundColor="#0095DA">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
