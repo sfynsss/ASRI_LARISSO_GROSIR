@@ -197,7 +197,6 @@ public class act_user_profile extends AppCompatActivity {
                 public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
                     if (response.isSuccessful()) {
                         session.setUserActivation(true);
-                        session.setGrosirActivation(true);
                         startActivity(new Intent(act_user_profile.this, act_otp_success.class));
                         finish();
                     } else {

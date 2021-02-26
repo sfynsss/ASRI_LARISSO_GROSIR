@@ -142,6 +142,14 @@ public class act_login extends AppCompatActivity {
                                                     }
                                                 }
                                             });
+                                } else if (response.body().getUser().getOtoritas().equals("RETAIL") && response.body().getUser().getEmailActivation().equals("0")) {
+                                    if (response.code() == 401) {
+                                        progressBar.setVisibility(View.INVISIBLE);
+                                        Toasty.error(getApplicationContext(), "Akun anda harus aktivasi di Retail Apps dahulu", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        progressBar.setVisibility(View.INVISIBLE);
+                                        Toasty.error(getApplicationContext(), "Akun anda harus aktivasi di Retail Apps dahulu", Toast.LENGTH_SHORT).show();
+                                    }
                                 } else {
                                     session.setUserStatus(true, response.body().getUser().getId() + "",
                                             response.body().getUser().getName() + "",
@@ -150,17 +158,14 @@ public class act_login extends AppCompatActivity {
                                             response.body().getUser().getOtoritas() + "",
                                             response.body().getUser().getJNSKELAMIN() + "");
                                     session.setUserActivation(false);
-                                    Intent it = new Intent(act_login.this, act_home.class);
+                                    Intent it = new Intent(act_login.this, act_pilih_outlet.class);
                                     startActivity(it);
                                     finish();
                                     progressBar.setVisibility(View.INVISIBLE);
                                 }
 
 
-
-
                             } else {
-//                                Toasty.error(getApplicationContext(), "Error Bro"+response.code(), Toast.LENGTH_SHORT).show();
                                 if (response.code() == 401) {
                                     progressBar.setVisibility(View.INVISIBLE);
                                     Toasty.error(getApplicationContext(), "Login Gagal, Username / Password Salah !!", Toast.LENGTH_SHORT).show();
