@@ -41,7 +41,7 @@ public class act_user_profile extends AppCompatActivity {
 
     Button btn_logout, btn_aktifasi;
     Session session;
-    Api service;
+    Api api;
     Call<BaseResponse> logout;
     Call<BaseResponse> aktifasi_user;
     TextView nama_pengguna, voucher, point, transaksi, alamat, no_telp, email;
@@ -64,11 +64,13 @@ public class act_user_profile extends AppCompatActivity {
             }
         });
         session = new Session(this);
-        service = RetrofitClient.createServiceWithAuth(Api.class, session.getToken());
+        api = RetrofitClient.createServiceWithAuth(Api.class, session.getToken());
 
         btn_logout = findViewById(R.id.btn_logout);
         btn_aktifasi = findViewById(R.id.btn_aktifasi);
-        if (session.getUserActivation() == true) {
+        if (session.getUserActivation() == false) {
+            btn_aktifasi.setVisibility(View.VISIBLE);
+        } else {
             btn_aktifasi.setVisibility(View.GONE);
         }
 
@@ -87,25 +89,23 @@ public class act_user_profile extends AppCompatActivity {
         btn_aktifasi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Dexter.withContext(getApplicationContext())
-                        .withPermission(Manifest.permission.CAMERA)
-                        .withListener(new PermissionListener() {
-                            @Override
-                            public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
-                                Intent i = new Intent(act_user_profile.this, QrCodeActivity.class);
-                                startActivityForResult( i,REQUEST_CODE_QR_SCAN);
-                            }
+                Dexter.withContext(getApplicationContext()).withPermission(Manifest.permission.CAMERA).withListener(new PermissionListener() {
+                    @Override
+                    public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
+                        Intent i = new Intent(act_user_profile.this, QrCodeActivity.class);
+                        startActivityForResult( i,REQUEST_CODE_QR_SCAN);
+                    }
 
-                            @Override
-                            public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
-                                permissionDeniedResponse.getRequestedPermission();
-                            }
+                    @Override
+                    public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
+                        permissionDeniedResponse.getRequestedPermission();
+                    }
 
-                            @Override
-                            public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
+                    @Override
+                    public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
 
-                            }
-                        }).check();
+                    }
+                }).check();
             }
         });
 
@@ -121,7 +121,7 @@ public class act_user_profile extends AppCompatActivity {
                 pDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                     @Override
                     public void onClick(final SweetAlertDialog sweetAlertDialog) {
-                        logout = service.logout();
+                        logout = api.logout();
                         logout.enqueue(new Callback<BaseResponse>() {
                             @Override
                             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
@@ -191,12 +191,13 @@ public class act_user_profile extends AppCompatActivity {
                 return;
             //Getting the passed result
             String result = data.getStringExtra("com.blikoon.qrcodescanner.got_qr_scan_relult");
-            aktifasi_user = service.aktifasi(session.getIdUser(), result);
+            aktifasi_user = api.aktifasiGrosir(session.getIdUser(), result);
             aktifasi_user.enqueue(new Callback<BaseResponse>() {
                 @Override
                 public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
                     if (response.isSuccessful()) {
                         session.setUserActivation(true);
+                        session.setGrosirActivation(true);
                         startActivity(new Intent(act_user_profile.this, act_otp_success.class));
                         finish();
                     } else {

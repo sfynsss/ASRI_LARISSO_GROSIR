@@ -50,6 +50,9 @@ public class User {
     @SerializedName("activation_token")
     @Expose
     private String activationToken;
+    @SerializedName("grosir_activation")
+    @Expose
+    private String grosirActivation;
     @SerializedName("kd_peg")
     @Expose
     private String kdPeg;
@@ -180,6 +183,7 @@ public class User {
     @Expose
     private String pOINTLALU;
 
+
     public Integer getId() {
         return id;
     }
@@ -298,6 +302,12 @@ public class User {
 
     public void setActivationToken(String activationToken) {
         this.activationToken = activationToken;
+    }
+
+    public String getGrosirActivation(){ return grosirActivation; }
+
+    public void setGrosirActivation(String grosirActivation){
+        this.grosirActivation = grosirActivation;
     }
 
     public String getKdPeg() {

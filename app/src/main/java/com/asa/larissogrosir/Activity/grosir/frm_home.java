@@ -1,6 +1,5 @@
 package com.asa.larissogrosir.Activity.grosir;
 
-
 import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
@@ -16,12 +15,6 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.cardview.widget.CardView;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.asa.larissogrosir.Api.Api;
 import com.asa.larissogrosir.Api.RetrofitClient;
@@ -39,6 +32,11 @@ import com.synnapps.carouselview.ImageListener;
 
 import java.util.ArrayList;
 
+import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import es.dmoral.toasty.Toasty;
 import retrofit2.Call;
 import retrofit2.Callback;

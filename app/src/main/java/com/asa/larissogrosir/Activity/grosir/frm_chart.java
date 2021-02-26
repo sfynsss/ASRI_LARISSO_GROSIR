@@ -121,7 +121,7 @@ public class frm_chart extends Fragment {
         checkout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (session.getUserActivation() == false){
+                if (session.getUserActivation() == false || session.getGrosirActivation() == false){
                     final SweetAlertDialog pDialog = new SweetAlertDialog(getContext(), SweetAlertDialog.ERROR_TYPE);
                     pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
                     pDialog.setTitleText("Silahkan Registrasi Dahulu");

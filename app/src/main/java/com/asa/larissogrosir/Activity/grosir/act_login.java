@@ -79,7 +79,7 @@ public class act_login extends AppCompatActivity {
                         @Override
                         public void onResponse(Call<UserResponse> call, final Response<UserResponse> response) {
                             if (response.isSuccessful()) {
-                                if (response.body().getUser().getEmailActivation().equals("1")) {
+                                if (response.body().getUser().getOtoritas().equals("GROSIR") && response.body().getUser().getEmailActivation().equals("1")) {
 //                                    Toasty.success(getApplicationContext(), "Selamat Datang " + response.body().getUser().getName(), Toast.LENGTH_SHORT).show();
                                     session.setUserStatus(true, response.body().getUser().getId() + "",
                                             response.body().getUser().getName() + "",
@@ -124,7 +124,6 @@ public class act_login extends AppCompatActivity {
                                                             @Override
                                                             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
                                                                 if (response.isSuccessful()) {
-//                                                                    startActivity(new Intent(act_login_retail.this, act_home_retail.class));
                                                                     startActivity(new Intent(act_login.this, act_pilih_outlet.class));
                                                                     finish();
                                                                 } else {
@@ -144,20 +143,22 @@ public class act_login extends AppCompatActivity {
                                                 }
                                             });
                                 } else {
-                                    session.setUserStatus(true, response.body().getUser().getId()+"",
-                                            response.body().getUser().getName()+"",
-                                            response.body().getUser().getEmail()+"",
-                                            response.body().getUser().getApiToken()+"",
-                                            response.body().getUser().getOtoritas()+"",
-                                            response.body().getUser().getJNSKELAMIN()+"");
+                                    session.setUserStatus(true, response.body().getUser().getId() + "",
+                                            response.body().getUser().getName() + "",
+                                            response.body().getUser().getEmail() + "",
+                                            response.body().getUser().getApiToken() + "",
+                                            response.body().getUser().getOtoritas() + "",
+                                            response.body().getUser().getJNSKELAMIN() + "");
                                     session.setUserActivation(false);
-                                    Intent it = new Intent(act_login.this, act_otp_validation.class);
-                                    it.putExtra("email", response.body().getUser().getEmail()+"");
+                                    Intent it = new Intent(act_login.this, act_home.class);
                                     startActivity(it);
                                     finish();
-                                    Toasty.error(getApplicationContext(), "Email belum di aktifasi, silahkan cek e-mail untuk aktifasi.", Toast.LENGTH_SHORT).show();
                                     progressBar.setVisibility(View.INVISIBLE);
                                 }
+
+
+
+
                             } else {
 //                                Toasty.error(getApplicationContext(), "Error Bro"+response.code(), Toast.LENGTH_SHORT).show();
                                 if (response.code() == 401) {

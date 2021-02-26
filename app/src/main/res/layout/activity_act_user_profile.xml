@@ -239,7 +239,7 @@
         android:textStyle="bold"
         android:textColor="#FFF"
         android:textAllCaps="false"
-        android:text="Edit Profil"
+        android:text="Aktivasi"
         android:background="#FF661B"
         android:visibility="visible">
     </Button>

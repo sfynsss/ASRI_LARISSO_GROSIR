@@ -36,6 +36,11 @@ public class Session {
         editor.commit();
     }
 
+    public void setGrosirActivation (Boolean activation) {
+        editor.putBoolean("activation", activation);
+        editor.commit();
+    }
+
     public void setKdCust(String kd_cust){
         editor.putString("kd_cust", kd_cust);
         editor.commit();
@@ -68,6 +73,10 @@ public class Session {
     }
 
     public boolean getUserActivation(){
+        return preferences.getBoolean("activation", false);
+    }
+
+    public boolean getGrosirActivation(){
         return preferences.getBoolean("activation", false);
     }
 
