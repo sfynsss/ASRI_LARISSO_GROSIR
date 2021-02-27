@@ -465,7 +465,7 @@ public class act_detail_barang_retail extends AppCompatActivity {
                 if (jml.getText().toString().equals("0")) {
                     Toasty.warning(act_detail_barang_retail.this, "Jumlah barang harus lebih dari 0", Toast.LENGTH_SHORT).show();
                 } else {
-                    inputToCart = api.inputToCart(session.getIdUser(), kd_brg, nm_brg, satuan, harga_jl, qty, gbr, kat, session.getKdOutlet());
+                    inputToCart = api.inputToCart(session.getIdUser(), kd_brg, nm_brg, satuan, harga_simpan, qty, gbr, kat, session.getKdOutlet());
                     inputToCart.enqueue(new Callback<BaseResponse>() {
                         @Override
                         public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
