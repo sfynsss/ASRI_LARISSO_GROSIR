@@ -530,7 +530,7 @@ public class act_checkout extends AppCompatActivity {
         kurir.add(R.drawable.logo_jne);
         kurir.add(R.drawable.logo_jnt);
         kurir.add(R.drawable.logo_pos);
-        kurir.add(R.drawable.rt_checkout_cod);
+        kurir.add(R.drawable.gr_checkout_cod);
         kurir.add(R.drawable.take_away);
         kurir_name.clear();
         kurir_name.add("JNE");
@@ -540,7 +540,7 @@ public class act_checkout extends AppCompatActivity {
         kurir_name.add("Ambil Ditempat");
 //        ArrayAdapter<Integer> adapter = new ArrayAdapter<>(act_checkout.this, android.R.layout.simple_expandable_list_item_1, kurir);
 //        adapter.setDropDownViewResource(R.layout.spinner_kurir);
-        AdapterKurir adapter = new AdapterKurir(act_checkout.this, kurir);
+        AdapterKurir1 adapter = new AdapterKurir1(act_checkout.this, kurir, kurir_name);
         list_pengiriman = v.findViewById(R.id.list_pengiriman);
         list_pengiriman.setAdapter(adapter);
 
@@ -570,7 +570,7 @@ public class act_checkout extends AppCompatActivity {
                     getOngkir("160", session.getKdKecamatan(), "1000", a);
                     pilih_pembayaran.setText("Pilih Pembayaran");
                 } else if (position == 3) {
-                    nama_kurir.setImageResource(R.drawable.rt_checkout_cod);
+                    nama_kurir.setImageResource(R.drawable.gr_checkout_cod);
                     a = "cod";
 
                     initialLat = Double.parseDouble(session.getLat());
