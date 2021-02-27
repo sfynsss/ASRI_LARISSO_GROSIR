@@ -1,25 +1,34 @@
 package com.asa.larissogrosir.Activity.grosir;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationManager;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
+import android.os.Looper;
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import com.asa.larissogrosir.Api.Api;
 import com.asa.larissogrosir.Api.RetrofitClient;
@@ -28,9 +37,17 @@ import com.asa.larissogrosir.Session.Session;
 import com.asa.larissogrosir.Table.Kecamatan;
 import com.asa.larissogrosir.Table.Kota;
 import com.asa.larissogrosir.Table.Provinsi;
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.ui.PlacePicker;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.ontbee.legacyforks.cn.pedant.SweetAlert.SweetAlertDialog;
 
 import java.util.ArrayList;
@@ -44,7 +61,10 @@ public class act_tambah_alamat extends AppCompatActivity {
 
     EditText nama_penerima, alamat, no_telp, kode_pos;
     Spinner provinsi, kota, kecamatan;
-    Button btn_simpan;
+    Button btn_pin_lokasi, btn_pin_maps, btn_simpan;
+    Switch lengkapi_otomatis;
+    TextView koordinat;
+    WifiManager wifiManager;
 
     Api api;
     Session session;
@@ -60,11 +80,13 @@ public class act_tambah_alamat extends AppCompatActivity {
     ArrayList<String> list_kecamatan = new ArrayList<>();
     ArrayList<String> list_id_kecamatan = new ArrayList<>();
 
-    String latitude ="0";
-    String longitude ="0";
+    String latitude = "0";
+    String longitude = "0";
     String kd_alamat = "";
+    FusedLocationProviderClient fusedLocationProviderClient;
 
     int PERMISSION_ID = 44;
+    private final static int PLACE_PICKER_REQUEST = 999;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,14 +109,55 @@ public class act_tambah_alamat extends AppCompatActivity {
         kota = findViewById(R.id.kota);
         kecamatan = findViewById(R.id.kecamatan);
         btn_simpan = findViewById(R.id.btn_simpan);
+        lengkapi_otomatis = findViewById(R.id.lengkapi_otomatis);
+        btn_pin_lokasi = findViewById(R.id.btn_pin_lokasi);
+        btn_pin_maps = findViewById(R.id.btn_pin_maps);
+        koordinat = findViewById(R.id.koordinat);
+
+        wifiManager= (WifiManager) this.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
 
         session = new Session(act_tambah_alamat.this);
         api = RetrofitClient.createServiceWithAuth(Api.class, session.getToken());
         getProvinsi();
 
-        checkPermissions();
-        isLocationEnabled();
-        requestPermissions();
+        lengkapi_otomatis.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
+                if(checked){
+                    nama_penerima.setText(session.getUsername());
+                    alamat.setText(session.getAlamat());
+                    no_telp.setText(session.getNoTelp());
+                }else {
+                    nama_penerima.setText("");
+                    alamat.setText("");
+                    no_telp.setText("");
+                }
+            }
+        });
+
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(act_tambah_alamat.this);
+
+        btn_pin_lokasi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                startActivity(new Intent(act_tambah_alamat.this, act_pin_location.class));
+                if (ActivityCompat.checkSelfPermission(act_tambah_alamat.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+                        && ActivityCompat.checkSelfPermission(act_tambah_alamat.this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED ){
+                    getCurrentLocation();
+                } else {
+                    ActivityCompat.requestPermissions(act_tambah_alamat.this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 100);
+                }
+            }
+        });
+
+        btn_pin_maps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Disable Wifi
+                wifiManager.setWifiEnabled(false);
+                openPlacePicker();
+            }
+        });
 
         provinsi.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -298,54 +361,93 @@ public class act_tambah_alamat extends AppCompatActivity {
         });
     }
 
-    private boolean checkPermissions() {
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
-                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            return true;
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == 100 && grantResults.length > 0 && (grantResults[0] + grantResults[1] == PackageManager.PERMISSION_GRANTED)){
+            getCurrentLocation();
+        } else {
+            Toast.makeText(getApplicationContext(), "Permisson Dennied.", Toast.LENGTH_SHORT);
         }
-        return false;
     }
 
-    private void requestPermissions() {
-        ActivityCompat.requestPermissions(
-                this,
-                new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION},
-                PERMISSION_ID
-        );
-    }
-
-    private boolean isLocationEnabled() {
+    @SuppressLint("MissingPermission")
+    private void getCurrentLocation() {
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(
-                LocationManager.NETWORK_PROVIDER
-        );
+        if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)){
+            fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
+                @Override
+                public void onComplete(@NonNull Task<Location> task) {
+                    final Location location = task.getResult();
+                    if (location != null){
+                        latitude = String.valueOf(location.getLatitude());
+                        longitude = String.valueOf(location.getLongitude());
+                        koordinat.setText(latitude+" | "+longitude);
+                    } else {
+                        LocationRequest locationRequest = new LocationRequest()
+                                .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
+                                .setInterval(10000)
+                                .setFastestInterval(1000)
+                                .setNumUpdates(1);
+
+                        LocationCallback locationCallback = new LocationCallback(){
+                            @Override
+                            public void onLocationResult(LocationResult locationResult) {
+                                super.onLocationResult(locationResult);
+                                Location location1 = locationResult.getLastLocation();
+                                latitude = String.valueOf(location1.getLatitude());
+                                longitude = String.valueOf(location1.getLongitude());
+                                koordinat.setText(latitude+" | "+longitude);
+                            }
+                        };
+                        fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, Looper.myLooper());
+                    }
+                }
+            });
+        } else {
+            startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
+                    .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+        }
+    }
+
+    private void openPlacePicker() {
+        PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
+        try {
+            startActivityForResult(builder.build(this), PLACE_PICKER_REQUEST);
+
+            //Enable Wifi
+            wifiManager.setWifiEnabled(true);
+
+        } catch (GooglePlayServicesRepairableException e) {
+            Log.d("Exception",e.getMessage());
+
+            e.printStackTrace();
+        } catch (GooglePlayServicesNotAvailableException e) {
+            Log.d("Exception",e.getMessage());
+
+            e.printStackTrace();
+        }
+
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == PERMISSION_ID) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                FusedLocationProviderClient mFusedLocation = LocationServices.getFusedLocationProviderClient(this);
-                mFusedLocation.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
-                    @Override
-                    public void onSuccess(Location location) {
-                        if (location != null){
-                            // Do it all with location
-                            Log.d("My Current location", "Lat : " + location.getLatitude() + " Long : " + location.getLongitude());
-                            latitude  = location.getLatitude()+"";
-                            longitude = location.getLongitude()+"";
-                            System.out.println(latitude+" | "+longitude);
-                            // Display in Toast
-//                            Toast.makeText(KunjunganActivity.this,
-//                                    "Lat : " + location.getLatitude() + " Long : " + location.getLongitude(),
-//                                    Toast.LENGTH_LONG).show();
-                        }
-                    }
-                });
-            } else {
-                Toasty.warning(this, "Silahkan hidupkan gps untuk menyimpan lokasi Anda.", Toast.LENGTH_SHORT).show();
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK) {
+            switch (requestCode){
+                case PLACE_PICKER_REQUEST:
+                    Place place = PlacePicker.getPlace(act_tambah_alamat.this, data);
+
+                    double latitude = place.getLatLng().latitude;
+                    double longitude = place.getLatLng().longitude;
+                    this.latitude = latitude+"";
+                    this.longitude = longitude+"";
+                    String PlaceLatLng = String.valueOf(latitude)+" , "+String.valueOf(longitude);
+                    koordinat.setText(PlaceLatLng);
+
             }
         }
     }
+
+
 }

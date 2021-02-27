@@ -61,7 +61,7 @@ public class frm_user extends Fragment {
     }
 
     TextView nama_pengguna, alamat;
-    LinearLayout btn_pengguna, btn_alamat, btn_logout, btn_transaksi, btn_voucher;
+    LinearLayout btn_pengguna, btn_alamat, btn_logout, btn_transaksi, btn_voucher, btn_point;
 
     Session session;
     Api service;
@@ -80,6 +80,7 @@ public class frm_user extends Fragment {
         btn_logout = view.findViewById(R.id.btn_logout);
         btn_transaksi = view.findViewById(R.id.btn_transaksi);
         btn_voucher = view.findViewById(R.id.btn_voucher);
+        btn_point = view.findViewById(R.id.btn_point);
 
         session = new Session(getContext());
         service = RetrofitClient.createServiceWithAuth(Api.class, session.getToken());
@@ -102,55 +103,6 @@ public class frm_user extends Fragment {
                 startActivity(new Intent(getContext(), act_list_alamat.class));
             }
         });
-
-//        btn_logout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                SweetAlertDialog pDialog = new SweetAlertDialog(getContext(), SweetAlertDialog.WARNING_TYPE);
-//                pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
-//                pDialog.setTitleText("WARNING");
-//                pDialog.setContentText("Apakah Anda yakin untuk Keluar ??");
-//                pDialog.setConfirmText("Iya");
-//                pDialog.setCancelText("Tidak");
-//                pDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-//                    @Override
-//                    public void onClick(final SweetAlertDialog sweetAlertDialog) {
-//                        logout = service.logout();
-//                        logout.enqueue(new Callback<BaseResponse>() {
-//                            @Override
-//                            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
-//                                if (response.isSuccessful()) {
-//                                    sweetAlertDialog.dismissWithAnimation();
-//                                    session.setUserStatus(false, false, "","", "", "");
-//                                    startActivity(new Intent(getActivity(), act_login.class));
-//                                    getActivity().finish();
-//                                } else {
-//                                    sweetAlertDialog.dismissWithAnimation();
-//                                    session.setUserStatus(false, false, "","", "", "");
-//                                    startActivity(new Intent(getActivity(), act_login.class));
-//                                    getActivity().finish();
-//                                }
-//                            }
-//
-//                            @Override
-//                            public void onFailure(Call<BaseResponse> call, Throwable t) {
-//                                sweetAlertDialog.dismissWithAnimation();
-//                                session.setUserStatus(false, false, "","", "", "");
-//                                startActivity(new Intent(getActivity(), act_login.class));
-//                                getActivity().finish();
-//                            }
-//                        });
-//                    }
-//                });
-//                pDialog.setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
-//                    @Override
-//                    public void onClick(SweetAlertDialog sweetAlertDialog) {
-//                        sweetAlertDialog.dismissWithAnimation();
-//                    }
-//                });
-//                pDialog.show();
-//            }
-//        });
 
         btn_transaksi.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -179,7 +179,7 @@ public class act_login extends AppCompatActivity {
                         @Override
                         public void onFailure(Call<UserResponse> call, Throwable t) {
                             progressBar.setVisibility(View.INVISIBLE);
-                            Toasty.error(act_login.this, "Ini error juga bos" + t.getMessage(), Toast.LENGTH_SHORT).show();
+                                Toasty.error(act_login.this, "Terjadi Error " + t.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
                 }

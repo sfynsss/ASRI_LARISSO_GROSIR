@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Activity.retail.frm_user">
+    tools:context=".frm_user">
 
     <!-- HEADER START -->
     <LinearLayout
@@ -267,6 +267,7 @@
             </LinearLayout>
             <!-- Sub Judul -->
             <LinearLayout
+                android:id="@+id/btn_point"
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
                 android:background="#fff"

@@ -44,7 +44,7 @@ public class act_user_profile extends AppCompatActivity {
     Api api;
     Call<BaseResponse> logout;
     Call<BaseResponse> aktifasi_user;
-    TextView nama_pengguna, voucher, point, transaksi, alamat, no_telp, email;
+    TextView nama_pengguna, alamat, no_telp, email;
 
     private static final int REQUEST_CODE_QR_SCAN = 101;
     Button scan;
@@ -57,6 +57,7 @@ public class act_user_profile extends AppCompatActivity {
         setContentView(R.layout.activity_act_user_profile);
 
         ImageView back = findViewById(R.id.back);
+
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
