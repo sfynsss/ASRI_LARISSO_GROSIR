@@ -44,6 +44,7 @@ public class act_user_profile extends AppCompatActivity {
     Api api;
     Call<BaseResponse> logout;
     Call<BaseResponse> aktifasi_user;
+    Call<BaseResponse> generateGrosirToken;
     TextView nama_pengguna, alamat, no_telp, email;
 
     private static final int REQUEST_CODE_QR_SCAN = 101;
@@ -90,6 +91,7 @@ public class act_user_profile extends AppCompatActivity {
         btn_aktifasi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                generateGrosirToken = api.generateGrosirToken(session.getIdUser());
                 Dexter.withContext(getApplicationContext()).withPermission(Manifest.permission.CAMERA).withListener(new PermissionListener() {
                     @Override
                     public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {

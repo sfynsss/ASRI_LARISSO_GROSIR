@@ -434,4 +434,10 @@ public interface Api {
             @Field("id") String id
     );
 
+    @FormUrlEncoded
+    @POST("generateGrosirToken")
+    Call<BaseResponse> generateGrosirToken(
+            @Field("id") String id
+    );
+
 }
