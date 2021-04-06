@@ -52,6 +52,8 @@ public class act_search_result extends AppCompatActivity {
     ArrayList<String> qty_min2 = new ArrayList<>();
     ArrayList<String> qty_min3 = new ArrayList<>();
     ArrayList<String> qty_min4 = new ArrayList<>();
+    ArrayList<String> berat = new ArrayList<>();
+    ArrayList<String> volume = new ArrayList<>();
     ArrayList<String> satuan = new ArrayList<>();
     ArrayList<String> gambar = new ArrayList<>();
     ArrayList<String> disc = new ArrayList<>();
@@ -121,6 +123,8 @@ public class act_search_result extends AppCompatActivity {
                     qty_min2.clear();
                     qty_min3.clear();
                     qty_min4.clear();
+                    berat.clear();
+                    volume.clear();
                     satuan.clear();
                     gambar.clear();
                     disc.clear();
@@ -138,6 +142,8 @@ public class act_search_result extends AppCompatActivity {
                         qty_min2.add(response.body().getData().get(i).getQtyMin2().toString());
                         qty_min3.add(response.body().getData().get(i).getQtyMin3().toString());
                         qty_min4.add(response.body().getData().get(i).getQtyMin4().toString());
+                        berat.add(response.body().getData().get(i).getBerat().toString());
+                        volume.add(response.body().getData().get(i).getVolume().toString());
                         satuan. add(response.body().getData().get(i).getSatuan1());
                         gambar.add(response.body().getData().get(i).getGambar());
                         disc.add(response.body().getData().get(i).getDisc().toString());
@@ -157,6 +163,8 @@ public class act_search_result extends AppCompatActivity {
                             qty_min2,
                             qty_min3,
                             qty_min4,
+                            berat,
+                            volume,
                             satuan,
                             disc,
                             harga_disc);

@@ -18,6 +18,7 @@ import com.asa.larissogrosir.Table.Outlet;
 import com.asa.larissogrosir.Table.Penawaran;
 import com.asa.larissogrosir.Table.Pengiriman;
 import com.asa.larissogrosir.Table.PoinVoucher;
+import com.asa.larissogrosir.Table.Promo;
 import com.asa.larissogrosir.Table.Provinsi;
 import com.asa.larissogrosir.Table.SettingPoint;
 import com.asa.larissogrosir.Table.SettingVoucher;
@@ -237,6 +238,8 @@ public interface Api {
             @Field("satuan1") String satuan1,
             @Field("harga_jl") String harga_jl,
             @Field("qty") String qty,
+            @Field("berat") String berat,
+            @Field("volume") String volume,
             @Field("gambar") String gambar,
             @Field("kategori") String kat,
             @Field("kd_outlet") String kd_outlet
@@ -271,6 +274,8 @@ public interface Api {
             @Field("nm_brg") String nm_brg,
             @Field("satuan1") String satuan1,
             @Field("harga_jl") String harga_jl,
+            @Field("berat") String berat,
+            @Field("volume") String volume,
             @Field("gambar") String gambar,
             @Field("kategori") String kat
     );
@@ -439,5 +444,8 @@ public interface Api {
     Call<BaseResponse> generateGrosirToken(
             @Field("id") String id
     );
+
+    @GET("getPromo")
+    Call<BaseResponse<Promo>> getPromo();
 
 }

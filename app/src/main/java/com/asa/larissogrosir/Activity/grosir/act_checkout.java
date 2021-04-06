@@ -59,6 +59,8 @@ public class act_checkout extends AppCompatActivity {
     private ArrayList<String> hrg_brg = new ArrayList<>();
     private ArrayList<String> hrg_asli = new ArrayList<>();
     private ArrayList<String> qty = new ArrayList<>();
+    private ArrayList<String> berat = new ArrayList<>();
+    private ArrayList<String> volume = new ArrayList<>();
     private ArrayList<String> gambar = new ArrayList<>();
     private ArrayList<String> sts_point = new ArrayList<>();
     double total = 0, netto = 0, ongkir_total = 0, potongan = 0, subtot_point = 0, tot_point = 0;
@@ -66,7 +68,7 @@ public class act_checkout extends AppCompatActivity {
     NumberFormat formatRupiah;
     String no_ent, a = "";
 
-    TextView ganti_alamat, total_belanja, ongkir, jumlah_total, harga_ongkir, potongan_voucher;
+    TextView ganti_alamat, total_belanja, ongkir, jumlah_total, harga_ongkir, potongan_voucher, v_total_berat, v_total_volume;
     TextView alamat_pengiriman, nama_penerima, no_penerima, nama_voucher, tx_voucher, hapus_voucher;
     ImageView nama_kurir;
     LinearLayout ly_gunakan_voucher, ly_potongan_voucher;
@@ -115,6 +117,8 @@ public class act_checkout extends AppCompatActivity {
         hrg_brg = (ArrayList<String>) getIntent().getSerializableExtra("hrg_brg");
         hrg_asli = (ArrayList<String>) getIntent().getSerializableExtra("hrg_asli");
         qty = (ArrayList<String>) getIntent().getSerializableExtra("qty");
+        berat = (ArrayList<String>) getIntent().getSerializableExtra("berat");
+        volume = (ArrayList<String>) getIntent().getSerializableExtra("volume");
         gambar = (ArrayList<String>) getIntent().getSerializableExtra("gambar");
         sts_point = (ArrayList<String>) getIntent().getSerializableExtra("sts_point");
 
@@ -149,6 +153,11 @@ public class act_checkout extends AppCompatActivity {
         hapus_voucher = findViewById(R.id.hapus_voucher);
         potongan_voucher = findViewById(R.id.potongan_voucher);
         ly_potongan_voucher = findViewById(R.id.ly_potongan_voucher);
+        v_total_berat = findViewById(R.id.v_berat);
+        v_total_volume = findViewById(R.id.v_volume);
+
+        v_total_berat.setText(getIntent().getStringExtra("total_berat").replace(".0", "") + " gram");
+        v_total_volume.setText(getIntent().getStringExtra("total_volume").replace(".0", "") + " m3");
 
         alamat_pengiriman = findViewById(R.id.alamat_pengiriman);
         nama_penerima = findViewById(R.id.nama_penerima);
@@ -557,17 +566,17 @@ public class act_checkout extends AppCompatActivity {
                 if (position == 0) {
                     a = "jne";
                     nama_kurir.setImageResource(R.drawable.logo_jne);
-                    getOngkir("160", session.getKdKecamatan(), "1000", a);
+                    getOngkir("160", session.getKdKecamatan(), getIntent().getStringExtra("total_berat"), a);
                     pilih_pembayaran.setText("Pilih Pembayaran");
                 } else if (position == 1) {
                     nama_kurir.setImageResource(R.drawable.logo_jnt);
                     a = "jnt";
-                    getOngkir("160", session.getKdKecamatan(), "1000", a);
+                    getOngkir("160", session.getKdKecamatan(), getIntent().getStringExtra("total_berat"), a);
                     pilih_pembayaran.setText("Pilih Pembayaran");
                 } else if (position == 2) {
                     nama_kurir.setImageResource(R.drawable.logo_pos);
                     a = "pos";
-                    getOngkir("160", session.getKdKecamatan(), "1000", a);
+                    getOngkir("160", session.getKdKecamatan(), getIntent().getStringExtra("total_berat"), a);
                     pilih_pembayaran.setText("Pilih Pembayaran");
                 } else if (position == 3) {
                     nama_kurir.setImageResource(R.drawable.gr_checkout_cod);
@@ -580,7 +589,7 @@ public class act_checkout extends AppCompatActivity {
                     if (session.getLat().equals("0") || session.getLong().equals("0")) {
                         Toasty.error(act_checkout.this, "Maaf lokasi Anda error", Toast.LENGTH_SHORT).show();
                         nama_kurir.setImageResource(R.drawable.logo_jne);
-                        getOngkir("160", session.getKdKecamatan(), "1000", a);
+                        getOngkir("160", session.getKdKecamatan(), getIntent().getStringExtra("total_berat"), a);
                     } else {
                         System.out.println(Math.round(hasil) + "km");
                         getOngkirCod(Math.round(hasil) + "");

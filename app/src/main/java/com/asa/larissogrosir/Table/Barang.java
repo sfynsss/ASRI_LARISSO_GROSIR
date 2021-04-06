@@ -74,6 +74,12 @@ public class Barang {
     @SerializedName("qty_min4")
     @Expose
     private Integer qtyMin4;
+    @SerializedName("berat")
+    @Expose
+    private Double berat;
+    @SerializedName("volume")
+    @Expose
+    private Double volume;
     @SerializedName("gambar")
     @Expose
     private String gambar;
@@ -262,6 +268,22 @@ public class Barang {
 
     public Integer getQtyMin4() {
         return qtyMin4;
+    }
+
+    public Double getBerat() {
+        return berat;
+    }
+
+    public void setBerat(Double berat) {
+        this.berat = berat;
+    }
+
+    public Double getVolume() {
+        return volume;
+    }
+
+    public void setVolume(Double volume) {
+        this.volume = volume;
     }
 
     public void setQtyMin4(Integer qtyMin4) {

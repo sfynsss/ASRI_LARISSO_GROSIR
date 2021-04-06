@@ -3,6 +3,7 @@ package com.asa.larissogrosir.Activity.grosir;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
@@ -34,14 +35,15 @@ import retrofit2.Response;
 public class act_detail_barang_retail extends AppCompatActivity {
 
     ImageView gambar, back;
-    TextView nama_barang, kategori_barang, harga_barang;
+    TextView nama_barang, kategori_barang, harga_barang, berat_brg, volume_brg;
     TextView text_harga_2, text_harga_3, text_harga_4, qty_min2, qty_min3, qty_min4, sub_total;
     EditText jml;
     Button btn_min, btn_plus, ke_cart, ke_wishlist;
     LinearLayout tampil_harga_bertingkat, harga1, harga2, harga3;
     NumberFormat formatRupiah;
     int i = 1;
-    String kd_brg = "", nm_brg = "", satuan = "", harga_jl = "", harga_jl2 = "", harga_jl3 = "", harga_jl4 = "", qty = "", gbr = "", kat = "";
+    double berat_total = 0;
+    String kd_brg = "", nm_brg = "", satuan = "", harga_jl = "", harga_jl2 = "", harga_jl3 = "", harga_jl4 = "", qty = "", gbr = "", kat = "", berat = "", volume="";
     int tmp_qty_min2, tmp_qty_min3, tmp_qty_min4;
     String harga_simpan = "";
 
@@ -70,6 +72,10 @@ public class act_detail_barang_retail extends AppCompatActivity {
         kategori_barang = findViewById(R.id.kategori_barang);
         harga_barang = findViewById(R.id.harga_barang);
         jml = findViewById(R.id.jml);
+        jml.setText(i+"");
+        jml.setFilters( new InputFilter[]{ new QtyMinMax( "1" , "1000" )}) ;
+        berat_brg = findViewById(R.id.berat_brg);
+        volume_brg = findViewById(R.id.volume);
         btn_min = findViewById(R.id.btn_min);
         btn_plus = findViewById(R.id.btn_plus);
         ke_cart = findViewById(R.id.ke_cart);
@@ -119,7 +125,8 @@ public class act_detail_barang_retail extends AppCompatActivity {
         tmp_qty_min2 = Integer.parseInt(getIntent().getStringExtra("qty_min2"));
         tmp_qty_min3 = Integer.parseInt(getIntent().getStringExtra("qty_min3"));
         tmp_qty_min4 = Integer.parseInt(getIntent().getStringExtra("qty_min4"));
-
+        berat_brg.setText(getIntent().getStringExtra("berat"));
+        volume_brg.setText(getIntent().getStringExtra("volume"));
         kd_brg = getIntent().getStringExtra("kd_brg");
         nm_brg = nama_barang.getText().toString();
         satuan = getIntent().getStringExtra("satuan");
@@ -133,6 +140,8 @@ public class act_detail_barang_retail extends AppCompatActivity {
         kat = getIntent().getStringExtra("kat_brg");
         jml.setText("0");
         sub_total.setText(formatRupiah.format(Double.parseDouble(harga_jl)));
+        berat = getIntent().getStringExtra("berat");
+        volume = getIntent().getStringExtra("volume");
 
         if (harga_jl2.equals("0")) {
             harga1.setVisibility(View.GONE);
@@ -462,10 +471,12 @@ public class act_detail_barang_retail extends AppCompatActivity {
                 qty = jml.getText().toString();
                 gbr = getIntent().getStringExtra("gambar");
                 kat = getIntent().getStringExtra("kat_brg");
+                berat = getIntent().getStringExtra("berat");
+                volume = getIntent().getStringExtra("volume");
                 if (jml.getText().toString().equals("0")) {
                     Toasty.warning(act_detail_barang_retail.this, "Jumlah barang harus lebih dari 0", Toast.LENGTH_SHORT).show();
                 } else {
-                    inputToCart = api.inputToCart(session.getIdUser(), kd_brg, nm_brg, satuan, harga_simpan, qty, gbr, kat, session.getKdOutlet());
+                    inputToCart = api.inputToCart(session.getIdUser(), kd_brg, nm_brg, satuan, harga_simpan, qty, berat, volume, gbr, kat, session.getKdOutlet());
                     inputToCart.enqueue(new Callback<BaseResponse>() {
                         @Override
                         public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
@@ -495,7 +506,9 @@ public class act_detail_barang_retail extends AppCompatActivity {
                 harga_jl = getIntent().getStringExtra("harga_jl");
                 gbr = getIntent().getStringExtra("gambar");
                 kat = getIntent().getStringExtra("kat_brg");
-                inputToWishlist = api.inputToWishlist(session.getIdUser(), kd_brg, nm_brg, satuan, harga_jl, gbr, kat);
+                berat = getIntent().getStringExtra("berat");
+                volume = getIntent().getStringExtra("volume");
+                inputToWishlist = api.inputToWishlist(session.getIdUser(), kd_brg, nm_brg, satuan, harga_jl, berat, volume, gbr, kat);
                 inputToWishlist.enqueue(new Callback<BaseResponse>() {
                     @Override
                     public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {

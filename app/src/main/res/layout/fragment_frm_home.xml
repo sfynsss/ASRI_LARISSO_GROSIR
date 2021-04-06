@@ -223,7 +223,7 @@
                                 android:layout_toEndOf="@+id/ic_voucher_anda"
                                 android:layout_marginTop="6dp"
                                 android:text="0"
-                                android:textColor="#FFDC45"
+                                android:textColor="@color/colorPrimaryDark"
                                 android:textStyle="bold">
                             </TextView>
                             <TextView
@@ -233,7 +233,7 @@
                                 android:layout_toEndOf="@+id/tx_voucher"
                                 android:layout_marginTop="6dp"
                                 android:text=" Voucher"
-                                android:textColor="#FFDC45"
+                                android:textColor="@color/colorPrimaryDark"
                                 android:textStyle="bold">
                             </TextView>
                         </RelativeLayout>
@@ -283,7 +283,7 @@
                                 android:layout_toEndOf="@+id/ic_poin_anda"
                                 android:layout_marginTop="6dp"
                                 android:text="0"
-                                android:textColor="#FFDC45"
+                                android:textColor="@color/colorPrimaryDark"
                                 android:textStyle="bold">
                             </TextView>
                             <TextView
@@ -293,7 +293,7 @@
                                 android:layout_toEndOf="@+id/tx_point"
                                 android:layout_marginTop="6dp"
                                 android:text=" Point"
-                                android:textColor="#FFDC45"
+                                android:textColor="@color/colorPrimaryDark"
                                 android:textStyle="bold">
                             </TextView>
                         </RelativeLayout>
