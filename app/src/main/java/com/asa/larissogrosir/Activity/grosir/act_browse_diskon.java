@@ -84,6 +84,7 @@ public class act_browse_diskon extends AppCompatActivity {
         tgl_akhir = findViewById(R.id.tgl_akhir);
         periode_promo = findViewById(R.id.periode_promo);
         promo_kosong = findViewById(R.id.promo_kosong);
+        swipe_refresh_layout = findViewById(R.id.swipe_refresh_layout);
 
         Locale localeID = new Locale("in", "ID");
         formatRupiah = NumberFormat.getCurrencyInstance(localeID);

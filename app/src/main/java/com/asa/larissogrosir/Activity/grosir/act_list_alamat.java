@@ -65,13 +65,13 @@ public class act_list_alamat extends AppCompatActivity {
         alamat_ada = findViewById(R.id.alamat_ada);
         alamat_kosong = findViewById(R.id.alamat_kosong);
 
-        ImageView back = findViewById(R.id.back);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+//        ImageView back = findViewById(R.id.back);
+//        back.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                onBackPressed();
+//            }
+//        });
 
         session = new Session(act_list_alamat.this);
         api = RetrofitClient.createServiceWithAuth(Api.class, session.getToken());

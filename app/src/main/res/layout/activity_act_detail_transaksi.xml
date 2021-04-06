@@ -1,23 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="10"
     android:orientation="vertical"
-    tools:context=".Activity.retail.act_detail_transaksi">
+    tools:context=".act_detail_transaksi">
 
     <!-- HEADER START -->
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/header"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="70dp"
+        android:layout_alignParentTop="true"
         android:background="@drawable/gr_main_header"
-        android:orientation="vertical"
-        android:layout_weight="1"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints">
+        android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -44,8 +41,8 @@
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipe_refresh_layout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="3.5">
+        android:layout_height="270dp"
+        android:layout_below="@+id/header">
         <LinearLayout
             android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
@@ -58,8 +55,7 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayout">
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:text="Nomor Transaksi">
@@ -67,8 +63,7 @@
             <TextView
                 android:id="@+id/no_ent"
                 android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="12345678910"
                 android:textStyle="bold"
@@ -77,8 +72,7 @@
             </TextView>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
                 android:weightSum="10"
                 android:layout_marginTop="5dp"
                 android:layout_marginHorizontal="16dp"
@@ -103,8 +97,7 @@
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
                 android:weightSum="10"
                 android:layout_marginTop="6dp"
                 android:layout_marginHorizontal="16dp"
@@ -129,8 +122,7 @@
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
                 android:weightSum="10"
                 android:layout_marginTop="6dp"
                 android:layout_marginHorizontal="16dp"
@@ -156,8 +148,7 @@
             <LinearLayout
                 android:id="@+id/ly_ongkir"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
                 android:weightSum="10"
                 android:layout_marginTop="6dp"
                 android:layout_marginHorizontal="16dp"
@@ -183,8 +174,7 @@
             <LinearLayout
                 android:id="@+id/ly_potongan_voucher"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
                 android:weightSum="10"
                 android:layout_marginTop="6dp"
                 android:layout_marginHorizontal="16dp"
@@ -210,8 +200,7 @@
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
                 android:weightSum="10"
                 android:layout_marginTop="6dp"
                 android:layout_marginHorizontal="16dp"
@@ -233,12 +222,10 @@
                     android:gravity="center_vertical|end">
                 </TextView>
             </LinearLayout>
-
             <Button
                 android:id="@+id/lacak_pesanan"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="2.5"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginHorizontal="16dp"
                 android:text="Lacak Pesanan"
@@ -247,12 +234,10 @@
                 android:textAllCaps="false"
                 android:background="#47D764">
             </Button>
-
             <TextView
                 android:id="@+id/batalkan_pesanan"
                 android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
                 android:text="Batalkan pesanan?"
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
@@ -266,25 +251,27 @@
     <ListView
         android:id="@+id/list_barang"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="4.5"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        android:layout_height="match_parent"
+        android:layout_below="@id/swipe_refresh_layout"
+        android:layout_above="@+id/divider">
     </ListView>
 
-    <LinearLayout
-        android:id="@+id/linearLayout3"
+    <View
+        android:id="@+id/divider"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="2dp"
+        android:layout_above="@+id/footer"
+        android:background="#EAEAEA">
+    </View>
+
+    <LinearLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
         android:background="#FFF"
         android:gravity="center"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        android:layout_alignParentBottom="true">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -301,4 +288,4 @@
             android:textStyle="bold"/>
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>
