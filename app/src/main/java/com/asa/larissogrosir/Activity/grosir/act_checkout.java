@@ -268,18 +268,19 @@ public class act_checkout extends AppCompatActivity {
         pilih_pembayaran.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (sts_kurir == false) {
-                    final SweetAlertDialog dialog = new SweetAlertDialog(act_checkout.this, SweetAlertDialog.WARNING_TYPE);
+                if (alamat_pengiriman.getText().equals(", , , ")) {
+                    final SweetAlertDialog dialog = new SweetAlertDialog(act_checkout.this, SweetAlertDialog.ERROR_TYPE);
                     dialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
-                    dialog.setTitleText("Silahkan pilih jasa pengiriman terlebih dauhulu !!!");
+                    dialog.setTitleText("Alamat Belum Dipilih");
                     dialog.setCancelable(false);
                     dialog.show();
-                }
-//                } else if (sts_kurir == true && servis.getSelectedItem().equals("Ambil di tempat")) {
-//                    System.out.println("neng kene");
-//                    initInputPenjualan("0", "", "", "", "", "sukses");
-//                }
-                else {
+                } else if (sts_kurir == false) {
+                    final SweetAlertDialog dialog = new SweetAlertDialog(act_checkout.this, SweetAlertDialog.ERROR_TYPE);
+                    dialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
+                    dialog.setTitleText("Jenis Pengiriman Belum Dipilih");
+                    dialog.setCancelable(false);
+                    dialog.show();
+                } else {
                     initMidtransSdk();
                     MidtransSDK.getInstance().setTransactionRequest(initTransactionRequest());
                     MidtransSDK.getInstance().startPaymentUiFlow(act_checkout.this);

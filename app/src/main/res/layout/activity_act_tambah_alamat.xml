@@ -344,7 +344,9 @@
                     android:layout_weight="6"
                     android:layout_marginHorizontal="4dp"
                     android:text="Pilih Lokasi Saat Ini"
-                    android:textAllCaps="false">
+                    android:textAllCaps="false"
+                    android:textColor="#26C6DA"
+                    android:background="@drawable/gr_filter_bt_off">
                 </Button>
                 <Button
                     android:id="@+id/btn_pin_maps"
@@ -353,7 +355,9 @@
                     android:layout_weight="6"
                     android:layout_marginHorizontal="4dp"
                     android:text="Pilih Melalui Peta"
-                    android:textAllCaps="false">
+                    android:textAllCaps="false"
+                    android:textColor="#26C6DA"
+                    android:background="@drawable/gr_filter_bt_off">
                 </Button>
             </LinearLayout>
 
