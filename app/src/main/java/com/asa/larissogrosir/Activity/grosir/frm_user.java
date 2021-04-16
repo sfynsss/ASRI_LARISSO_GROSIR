@@ -151,24 +151,7 @@ public class frm_user extends Fragment {
         btn_aktifasi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                generateGrosirToken = api.generateGrosirToken(session.getIdUser());
-                Dexter.withContext(getContext()).withPermission(Manifest.permission.CAMERA).withListener(new PermissionListener() {
-                    @Override
-                    public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
-                        Intent i = new Intent(getContext(), QrCodeActivity.class);
-                        startActivityForResult( i,REQUEST_CODE_QR_SCAN);
-                    }
-
-                    @Override
-                    public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
-                        permissionDeniedResponse.getRequestedPermission();
-                    }
-
-                    @Override
-                    public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
-
-                    }
-                }).check();
+                startActivity(new Intent(getContext(), act_data_diri.class));
             }
         });
 

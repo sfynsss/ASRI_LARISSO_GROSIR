@@ -146,7 +146,8 @@ public interface Api {
     @POST("aktifasiGrosir")
     Call<BaseResponse> aktifasiGrosir(
             @Field("id") String id,
-            @Field("token") String token
+            @Field("token") String token,
+            @Field("foto_ktp") String foto_ktp
     );
 
     @FormUrlEncoded
