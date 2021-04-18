@@ -147,7 +147,8 @@ public interface Api {
     Call<BaseResponse> aktifasiGrosir(
             @Field("id") String id,
             @Field("token") String token,
-            @Field("foto_ktp") String foto_ktp
+            @Field("foto_ktp") String foto_ktp,
+            @Field("foto") String foto
     );
 
     @FormUrlEncoded
@@ -157,8 +158,8 @@ public interface Api {
     );
 
     @FormUrlEncoded
-    @POST("countPointVoucher")
-    Call<BaseResponse1<PoinVoucher>> getPointVoucher(
+    @POST("countPointVoucherGrosir")
+    Call<BaseResponse1<PoinVoucher>> getPointVoucherGrosir(
             @Field("id") String id
     );
 
@@ -249,7 +250,8 @@ public interface Api {
     @FormUrlEncoded
     @POST("getDataCart")
     Call<BaseResponse<Cart>> getDataCart(
-            @Field("id_user") String id_user
+            @Field("id_user") String id_user,
+            @Field("kd_outlet") String kd_outlet
     );
 
     @FormUrlEncoded
@@ -316,8 +318,8 @@ public interface Api {
     );
 
     @FormUrlEncoded
-    @POST("inputPenjualan")
-    Call<BaseResponse> inputPenjualan(
+    @POST("inputPenjualanGrosir")
+    Call<BaseResponse> inputPenjualanGrosir(
             @Field("no_ent") String no_ent,
             @Field("kd_cust") String kd_cust,
             @Field("nm_penerima") String nm_penerima,
@@ -344,7 +346,7 @@ public interface Api {
             @Field("no_va") String no_va,
             @Field("payment_bank") String payment_bank,
             @Field("payment_type") String payment_type,
-            @Field("point") String point
+            @Field("point_grosir") String point
 
     );
 

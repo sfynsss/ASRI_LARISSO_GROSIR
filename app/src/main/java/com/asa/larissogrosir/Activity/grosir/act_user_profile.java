@@ -194,7 +194,7 @@ public class act_user_profile extends AppCompatActivity {
                 return;
             //Getting the passed result
             String result = data.getStringExtra("com.blikoon.qrcodescanner.got_qr_scan_relult");
-            aktifasi_user = api.aktifasiGrosir(session.getIdUser(), result, "");
+            aktifasi_user = api.aktifasiGrosir(session.getIdUser(), result, "", "");
             aktifasi_user.enqueue(new Callback<BaseResponse>() {
                 @Override
                 public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {

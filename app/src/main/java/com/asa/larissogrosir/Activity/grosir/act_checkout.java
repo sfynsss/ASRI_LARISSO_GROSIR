@@ -707,8 +707,8 @@ public class act_checkout extends AppCompatActivity {
             @Override
             public void onResponse(Call<BaseResponse<SettingPoint>> call, Response<BaseResponse<SettingPoint>> response) {
                 if (response.isSuccessful()) {
-                    ketentuan_point = response.body().getData().get(0).getKetentuan();
-                    nilai_point = response.body().getData().get(0).getNilaiPoint();
+                    ketentuan_point = response.body().getData().get(1).getKetentuan();
+                    nilai_point = response.body().getData().get(1).getNilaiPoint();
                 } else {
                     Toasty.error(act_checkout.this, "Setting Point Tidak Ditemukan", Toast.LENGTH_SHORT).show();
                 }
@@ -749,7 +749,7 @@ public class act_checkout extends AppCompatActivity {
         }
 
         System.out.println(tot_point+"tot point");
-        inputPenjualan = api.inputPenjualan(no_ent, session.getIdUser(), nama_penerima.getText().toString(), alamat_pengiriman.getText().toString(),
+        inputPenjualan = api.inputPenjualanGrosir(no_ent, session.getIdUser(), nama_penerima.getText().toString(), alamat_pengiriman.getText().toString(),
                 no_penerima.getText().toString(), total + "", "", nilai_voucher, tmp_kd_voucher, "", netto + "",
                 ongkir_total + "", a + "", "", kode_barang, nama_barang, harga_barang, quantity, "pcs", "RETAIL", sts_bayar, transaction_id,
                 va, payment_bank, payment_type, tot_point+"");

@@ -79,7 +79,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginLeft="16dp"
-                android:text="Nama Lengkap"
+                android:text="Nama Toko"
                 android:textSize="18sp"
                 android:textColor="#000"
                 android:textStyle="bold">
@@ -89,7 +89,28 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
-                android:hint="Isikan nama lengkap"
+                android:hint="Isikan toko/outlet anda"
+                android:textSize="14sp"
+                android:maxLength="50"
+                android:inputType="textCapWords"
+                android:imeOptions="actionDone">
+            </EditText>
+            <!--Nama Lengkap-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                android:text="Nama Pemilik Toko"
+                android:textSize="18sp"
+                android:textColor="#000"
+                android:textStyle="bold">
+            </TextView>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:hint="Isikan nama pemilik toko"
                 android:textSize="14sp"
                 android:maxLength="50"
                 android:inputType="textCapWords"

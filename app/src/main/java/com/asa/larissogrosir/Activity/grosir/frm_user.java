@@ -75,8 +75,6 @@ public class frm_user extends Fragment {
     }
 
     TextView nama_pengguna, alamat;
-    Button btn_aktifasi;
-    RelativeLayout ly_activation;
     LinearLayout btn_pengguna, btn_alamat, btn_logout, btn_transaksi, btn_voucher, btn_point;
 
     Call<BaseResponse> aktifasi_user;
@@ -98,13 +96,11 @@ public class frm_user extends Fragment {
         nama_pengguna = view.findViewById(R.id.nama_pengguna);
         alamat = view.findViewById(R.id.alamat);
         btn_pengguna = view.findViewById(R.id.btn_pengguna);
-        btn_aktifasi = view.findViewById(R.id.btn_aktifasi);
         btn_alamat = view.findViewById(R.id.btn_alamat);
         btn_logout = view.findViewById(R.id.btn_logout);
         btn_transaksi = view.findViewById(R.id.btn_transaksi);
         btn_voucher = view.findViewById(R.id.btn_voucher);
         btn_point = view.findViewById(R.id.btn_point);
-        ly_activation = view.findViewById(R.id.ly_activation);
 
         session = new Session(getContext());
         api = RetrofitClient.createServiceWithAuth(Api.class, session.getToken());
@@ -112,12 +108,6 @@ public class frm_user extends Fragment {
 
         if (session.getAlamat() != "null") {
             alamat.setText(session.getAlamat());
-        }
-
-        if (session.getUserActivation() == false) {
-            ly_activation.setVisibility(View.VISIBLE);
-        } else {
-            ly_activation.setVisibility(View.GONE);
         }
 
         btn_pengguna.setOnClickListener(new View.OnClickListener() {
@@ -145,13 +135,6 @@ public class frm_user extends Fragment {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getContext(), act_voucher.class));
-            }
-        });
-
-        btn_aktifasi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getContext(), act_data_diri.class));
             }
         });
 

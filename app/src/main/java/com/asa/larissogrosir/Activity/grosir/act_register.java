@@ -138,6 +138,7 @@ public class act_register extends AppCompatActivity {
                                     response.body().getRegister().getOtoritas() + "",
                                     response.body().getRegister().getJNSKELAMIN()+"");
                             session.setKdCust(response.body().getRegister().getKDCUST());
+                            session.setUserActivation(false);
                             Intent it = new Intent(act_register.this, act_pilih_outlet.class);
                             //it.putExtra("email", response.body().getRegister().getEmail() + "");
                             startActivity(it);

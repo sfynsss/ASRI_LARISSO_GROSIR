@@ -116,7 +116,7 @@ public class act_point extends AppCompatActivity {
     }
 
     public void dataPoinVoucher(){
-        getPointVoucher = api.getPointVoucher(session.getIdUser());
+        getPointVoucher = api.getPointVoucherGrosir(session.getIdUser());
         getPointVoucher.enqueue(new Callback<BaseResponse1<PoinVoucher>>() {
             @Override
             public void onResponse(Call<BaseResponse1<PoinVoucher>> call, Response<BaseResponse1<PoinVoucher>> response) {

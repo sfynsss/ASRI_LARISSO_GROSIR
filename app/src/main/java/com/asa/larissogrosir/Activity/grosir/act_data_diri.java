@@ -40,10 +40,10 @@ import retrofit2.Response;
 
 public class act_data_diri extends AppCompatActivity {
 
+    TextView nama_pengguna;
     ImageView back, img_foto_ktp, img_foto_toko;
     Button btn_aktifasi;
-    Bitmap bitmap;
-    RequestOptions options;
+    Bitmap bitmap, bitmap2;
 
     Session session;
     Api api;
@@ -52,14 +52,17 @@ public class act_data_diri extends AppCompatActivity {
     Call<BaseResponse> generateGrosirToken;
     private static final int REQUEST_CODE_QR_SCAN = 101;
 
-    String tmp_gbr_ktp;
+    String tmp_gbr_ktp, tmp_gbr_toko;
+    Integer sts_pilih_foto = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_act_data_diri);
 
+        nama_pengguna = findViewById(R.id.nama_pengguna);
         img_foto_ktp = findViewById(R.id.img_foto_ktp);
+        img_foto_toko = findViewById(R.id.img_foto_toko);
         btn_aktifasi = findViewById(R.id.btn_aktifasi);
         back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
@@ -72,6 +75,8 @@ public class act_data_diri extends AppCompatActivity {
         session = new Session(this);
         api = RetrofitClient.createServiceWithAuth(Api.class, session.getToken());
 
+        nama_pengguna.setText(session.getUsername()+"");
+
         img_foto_ktp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,44 +84,41 @@ public class act_data_diri extends AppCompatActivity {
             }
         });
 
-        btn_aktifasi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                generateGrosirToken = api.generateGrosirToken(session.getIdUser());
-                Dexter.withContext(getApplicationContext()).withPermission(Manifest.permission.CAMERA).withListener(new PermissionListener() {
-                    @Override
-                    public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
-                        Intent i = new Intent(act_data_diri.this, QrCodeActivity.class);
-                        startActivityForResult(i,REQUEST_CODE_QR_SCAN);
-                    }
 
-                    @Override
-                    public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
-                        permissionDeniedResponse.getRequestedPermission();
-                    }
+            btn_aktifasi.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (sts_pilih_foto == 0){
+                        Toasty.error(act_data_diri.this, "Foto belum dipilih ", Toast.LENGTH_SHORT).show();
+                    } else {
+                        generateGrosirToken = api.generateGrosirToken(session.getIdUser());
+                        Dexter.withContext(getApplicationContext()).withPermission(Manifest.permission.CAMERA).withListener(new PermissionListener() {
+                            @Override
+                            public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
+                                Intent i = new Intent(act_data_diri.this, QrCodeActivity.class);
+                                startActivityForResult(i,REQUEST_CODE_QR_SCAN);
+                            }
 
-                    @Override
-                    public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
+                            @Override
+                            public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
+                                permissionDeniedResponse.getRequestedPermission();
+                            }
 
+                            @Override
+                            public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
+
+                            }
+                        }).check();
                     }
-                }).check();
-            }
-        });
+                }
+            });
+
 
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-//        if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
-//            Uri path = data.getData();
-//            try {
-//                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), path);
-//                img_foto_ktp.setImageBitmap(bitmap);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
         if (requestCode == 1 && resultCode == -1 && data != null) {
             Uri path = data.getData();
             tmp_gbr_ktp = "";
@@ -124,6 +126,8 @@ public class act_data_diri extends AppCompatActivity {
                 bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), path);
                 img_foto_ktp.setImageBitmap(bitmap);
                 tmp_gbr_ktp = imageToString(bitmap);
+                sts_pilih_foto = 1;
+                System.out.println("Nama Filenya " + tmp_gbr_ktp);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -135,7 +139,7 @@ public class act_data_diri extends AppCompatActivity {
             //Getting the passed result
             String result = data.getStringExtra("com.blikoon.qrcodescanner.got_qr_scan_relult");
             System.out.println("kode aktivasinya" + result);
-            aktifasi_user = api.aktifasiGrosir(session.getIdUser(), result, tmp_gbr_ktp);
+            aktifasi_user = api.aktifasiGrosir(session.getIdUser(), result, tmp_gbr_ktp, tmp_gbr_toko);
             aktifasi_user.enqueue(new Callback<BaseResponse>() {
                 @Override
                 public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
@@ -169,6 +173,7 @@ public class act_data_diri extends AppCompatActivity {
         byte[] imgBytes = byteArrayOutputStream.toByteArray();
         return Base64.encodeToString(imgBytes, Base64.DEFAULT);
     }
+
 
 
 }

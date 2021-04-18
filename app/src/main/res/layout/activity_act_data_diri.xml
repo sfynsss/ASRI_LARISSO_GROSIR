@@ -65,8 +65,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Silahkan unggah foto KTP &amp; foto Toko anda"
-            android:textSize="14sp"
+            android:text="Silahkan unggah foto diri dengan KTP didepan toko anda"
+            android:textSize="12sp"
             android:textAlignment="center">
         </TextView>
 
@@ -103,13 +103,13 @@
                     android:id="@+id/img_foto_toko"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:background="#EAEAEA">
+                    android:background="@drawable/grosir_contoh">
                 </ImageView>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
-                    android:text="Pilih Foto Toko">
+                    android:text="Contoh">
                 </TextView>
             </LinearLayout>
         </LinearLayout>
