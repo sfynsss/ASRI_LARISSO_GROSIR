@@ -78,7 +78,7 @@ public class frm_chart extends Fragment {
 
     Api api;
     Session session;
-    Call<BaseResponse<Cart>> getDataCart;
+    Call<BaseResponse<Cart>> getDataCartGrosir;
     Call<BaseResponse> updateCart;
     Call<BaseResponse> deleteCart;
 
@@ -172,8 +172,8 @@ public class frm_chart extends Fragment {
     }
 
     public void getData() {
-        getDataCart = api.getDataCart(session.getIdUser(), session.getKdOutlet());
-        getDataCart.enqueue(new Callback<BaseResponse<Cart>>() {
+        getDataCartGrosir = api.getDataCartGrosir(session.getIdUser(), session.getKdOutlet());
+        getDataCartGrosir.enqueue(new Callback<BaseResponse<Cart>>() {
             @Override
             public void onResponse(Call<BaseResponse<Cart>> call, Response<BaseResponse<Cart>> response) {
                 if (response.isSuccessful()) {

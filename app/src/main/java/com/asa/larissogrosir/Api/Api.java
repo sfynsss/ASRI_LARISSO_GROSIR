@@ -248,8 +248,8 @@ public interface Api {
     );
 
     @FormUrlEncoded
-    @POST("getDataCart")
-    Call<BaseResponse<Cart>> getDataCart(
+    @POST("getDataCartGrosir")
+    Call<BaseResponse<Cart>> getDataCartGrosir(
             @Field("id_user") String id_user,
             @Field("kd_outlet") String kd_outlet
     );

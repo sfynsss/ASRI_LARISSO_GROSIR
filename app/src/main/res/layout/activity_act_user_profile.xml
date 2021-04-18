@@ -241,7 +241,7 @@
         android:textAllCaps="false"
         android:text="Aktivasi"
         android:background="#FF661B"
-        android:visibility="visible">
+        android:visibility="gone">
     </Button>
 
     <Button
@@ -255,7 +255,7 @@
         android:textAllCaps="false"
         android:text="Logout"
         android:background="#FF661B"
-        android:visibility="visible">
+        android:visibility="gone">
     </Button>
 
 </LinearLayout>
