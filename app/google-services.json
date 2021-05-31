@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:942245333114:android:7b9843896ef34ffa9e13c3",
         "android_client_info": {
-          "package_name": "com.asa.larissogrosir"
+          "package_name": "com.asri.larissogrosirbaru"
         }
       },
       "oauth_client": [
@@ -17,7 +17,7 @@
           "client_id": "942245333114-gs40of5o147daqkkt9037e2cjjh6a821.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.asa.larissogrosir",
+            "package_name": "com.asri.larissogrosirbaru",
             "certificate_hash": "68bc459c297e586773f9ea49228f3e9783d93b3a"
           }
         },

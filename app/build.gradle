@@ -6,7 +6,7 @@ android {
     buildToolsVersion '29.0.2'
 
     defaultConfig {
-        applicationId "com.asa.larissogrosir"
+        applicationId "com.asri.larissogrosirbaru"
         minSdkVersion 19
         targetSdkVersion 29
         versionCode 18

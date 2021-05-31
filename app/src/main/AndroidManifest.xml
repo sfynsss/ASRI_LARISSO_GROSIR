@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.asa.larissogrosir.Activity.grosir">
+    package="com.asri.larissogrosirbaru.Activity.grosir">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -31,8 +31,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:replace="android:allowBackup">
-        <activity android:name=".act_order_track"></activity>
-        <activity android:name=".act_data_diri" />
+        <activity android:name="com.asri.larissogrosirbaru.Activity.grosir.act_order_track"></activity>
+        <activity android:name="com.asri.larissogrosirbaru.Activity.grosir.act_data_diri" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -41,13 +41,13 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity android:name=".act_lupa_password" />
-        <activity android:name=".act_pilih_outlet" />
-        <activity android:name=".act_browse_diskon" />
-        <activity android:name=".act_point" />
+        <activity android:name="com.asri.larissogrosirbaru.Activity.grosir.act_lupa_password" />
+        <activity android:name="com.asri.larissogrosirbaru.Activity.grosir.act_pilih_outlet" />
+        <activity android:name="com.asri.larissogrosirbaru.Activity.grosir.act_browse_diskon" />
+        <activity android:name="com.asri.larissogrosirbaru.Activity.grosir.act_point" />
 
         <service
-            android:name="com.asa.larissogrosir.Activity.FirebaseCloudeMessaging"
+            android:name="com.asri.larissogrosirbaru.Activity.FirebaseCloudeMessaging"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
@@ -55,61 +55,61 @@
         </service>
 
         <activity
-            android:name=".act_detail_transaksi"
+            android:name="com.asri.larissogrosirbaru.Activity.grosir.act_detail_transaksi"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".act_status_pembayaran"
+            android:name="com.asri.larissogrosirbaru.Activity.grosir.act_status_pembayaran"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".act_tambah_alamat"
+            android:name="com.asri.larissogrosirbaru.Activity.grosir.act_tambah_alamat"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".act_list_alamat"
+            android:name="com.asri.larissogrosirbaru.Activity.grosir.act_list_alamat"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".act_voucher"
+            android:name="com.asri.larissogrosirbaru.Activity.grosir.act_voucher"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".PopUpPengiriman"
+            android:name="com.asri.larissogrosirbaru.Activity.grosir.PopUpPengiriman"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".act_history_transaksi"
+            android:name="com.asri.larissogrosirbaru.Activity.grosir.act_history_transaksi"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".act_checkout"
+            android:name="com.asri.larissogrosirbaru.Activity.grosir.act_checkout"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".act_browse_barang"
+            android:name="com.asri.larissogrosirbaru.Activity.grosir.act_browse_barang"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".act_user_profile"
+            android:name="com.asri.larissogrosirbaru.Activity.grosir.act_user_profile"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".act_otp_validation"
+            android:name="com.asri.larissogrosirbaru.Activity.grosir.act_otp_validation"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".act_otp_success"
+            android:name="com.asri.larissogrosirbaru.Activity.grosir.act_otp_success"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".act_category"
+            android:name="com.asri.larissogrosirbaru.Activity.grosir.act_category"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".act_register"
+            android:name="com.asri.larissogrosirbaru.Activity.grosir.act_register"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".act_detail_barang_retail"
+            android:name="com.asri.larissogrosirbaru.Activity.grosir.act_detail_barang_retail"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".act_home"
+            android:name="com.asri.larissogrosirbaru.Activity.grosir.act_home"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".act_login"
+            android:name="com.asri.larissogrosirbaru.Activity.grosir.act_login"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".act_search_result"
+            android:name="com.asri.larissogrosirbaru.Activity.grosir.act_search_result"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".act_splash"
+            android:name="com.asri.larissogrosirbaru.Activity.grosir.act_splash"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
