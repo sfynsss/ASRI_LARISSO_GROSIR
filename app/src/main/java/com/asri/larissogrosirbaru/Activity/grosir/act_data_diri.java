@@ -89,6 +89,21 @@ public class act_data_diri extends AppCompatActivity {
                         Toasty.error(act_data_diri.this, "Foto belum dipilih ", Toast.LENGTH_SHORT).show();
                     } else {
                         generateGrosirToken = api.generateGrosirToken(session.getIdUser());
+//                        generateGrosirToken.enqueue(new Callback<BaseResponse>() {
+//                            @Override
+//                            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+//                                if (response.isSuccessful()) {
+//                                    System.out.println("generate berhasil");
+//                                } else {
+//                                    System.out.println("generate gagal");
+//                                }
+//                            }
+//
+//                            @Override
+//                            public void onFailure(Call<BaseResponse> call, Throwable t) {
+//                                System.out.println(t.getMessage());
+//                            }
+//                        });
                         Dexter.withContext(getApplicationContext()).withPermission(Manifest.permission.CAMERA).withListener(new PermissionListener() {
                             @Override
                             public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
